@@ -10,11 +10,11 @@ A aplicação, vem de encontro às necessidades da Instituição Superior de Ens
 
 ## Pré-requisitos
 
-* [Java EE 8](https://www.oracle.com/technetwork/java/javaee/downloads/index.html) - Linguagem de programação
-* [Maven](https://maven.apache.org/) - Gerenciamento de dependências
+* [JDK 1.8](https://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html).
+* [Maven](https://maven.apache.org/).
 
 ## Licença
 Este projeto foi licenciado sob os termos MIT License.
 
 ## Agradecimentos
-À Prof. Msc Cristiane Yae Mi Imamura pelo apoio técnico durante o período de desenvolvimento da aplicação.
+A Prof. Msc Cristiane Yae Mi Imamura pelo apoio técnico durante o período de desenvolvimento da aplicação.
