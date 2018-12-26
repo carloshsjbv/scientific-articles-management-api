@@ -10,7 +10,7 @@ A aplicação, vem de encontro às necessidades da Instituição Superior de Ens
 
 ## Pré-requisitos
 
-* [Java EE 8](https://www.oracle.com/technetwork/java/javaee/downloads/index.html) - The web framework used
+* [Java EE 8](https://www.oracle.com/technetwork/java/javaee/downloads/index.html) - Linguagem de programação
 * [Maven](https://maven.apache.org/) - Gerenciamento de dependências
 
 ## Licença
