@@ -2,13 +2,13 @@ package br.com.carlos.projeto.conclusao.curso.model.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -23,8 +23,7 @@ public class FilaSubmissoes implements Serializable {
     private static final long serialVersionUID = 3353083147886258895L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FILA_SEQ")
-    @SequenceGenerator(name = "FILA_SEQ", sequenceName = "FILA_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "FILASUBMISSOESID")
     private long id;
 

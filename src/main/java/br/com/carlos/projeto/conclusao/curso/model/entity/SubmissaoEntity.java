@@ -3,6 +3,7 @@ package br.com.carlos.projeto.conclusao.curso.model.entity;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,19 +29,18 @@ public class SubmissaoEntity implements Serializable {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SUBMISSAO_SEQ")
-    @SequenceGenerator(name = "SUBMISSAO_SEQ", sequenceName = "SUBMISSAO_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SUBMISSAOID")
     private long id;
 
     @NotNull
-    @Column(name = "TITULO", length = 1000)
+    @Column(name = "TITULO")
     private String titulo;
 
-    @Column(name = "RESUMO", length = 4000)
+    @Column(name = "RESUMO")
     private String resumo;
 
-    @Column(name = "PALAVRASCHAVE", length = 1000)
+    @Column(name = "PALAVRASCHAVE")
     private String palavrasChave;
 
     @NotNull
@@ -50,19 +49,19 @@ public class SubmissaoEntity implements Serializable {
     private Calendar momentoSubmissao;
 
     @NotNull
-    @Column(name = "PATHDOCUMENTOORIGINAL", length = 255)
+    @Column(name = "PATHDOCUMENTOORIGINAL")
     private String pathDocumentoOriginal;
 
-    @Column(name = "PATHEPUB", length = 255)
+    @Column(name = "PATHEPUB")
     private String pathEpub;
 
-    @Column(name = "PATHPDF", length = 255)
+    @Column(name = "PATHPDF")
     private String pathPDF;
 
-    @Column(name = "PATHXML", length = 255)
+    @Column(name = "PATHXML")
     private String pathXML;
 
-    @Column(name = "PATHHTML", length = 255)
+    @Column(name = "PATHHTML")
     private String pathHTML;
 
     @NotNull
