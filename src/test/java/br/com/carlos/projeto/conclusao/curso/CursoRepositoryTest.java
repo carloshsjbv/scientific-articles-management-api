@@ -2,7 +2,6 @@ package br.com.carlos.projeto.conclusao.curso;
 
 import br.com.carlos.projeto.conclusao.curso.model.entity.CursoEntity;
 import br.com.carlos.projeto.conclusao.curso.repository.CursoRepository;
-import javax.validation.ConstraintViolationException;
 import org.assertj.core.api.Assertions;
 import org.junit.Rule;
 import org.junit.Test;

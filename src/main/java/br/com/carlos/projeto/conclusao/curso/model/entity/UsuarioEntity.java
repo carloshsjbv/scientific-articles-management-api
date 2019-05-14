@@ -3,9 +3,8 @@ package br.com.carlos.projeto.conclusao.curso.model.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +14,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -37,8 +36,7 @@ public class UsuarioEntity implements UserDetails, Serializable {
 
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USARIO_SEQ")
-    @SequenceGenerator(name = "USARIO_SEQ", sequenceName = "USARIO_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
 
@@ -47,7 +45,7 @@ public class UsuarioEntity implements UserDetails, Serializable {
     private String username;
 
     @NotNull(message = "Favor informar uma senha válida")
-    @Column(name = "PASSWORD", length = 255, nullable = false)
+    @Column(name = "PASSWORD", length = 80, nullable = false)
     private String password;
 
     @ManyToMany

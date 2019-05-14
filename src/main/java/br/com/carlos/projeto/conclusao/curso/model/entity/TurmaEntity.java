@@ -2,6 +2,7 @@ package br.com.carlos.projeto.conclusao.curso.model.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -25,8 +25,7 @@ public class TurmaEntity implements Serializable {
     private static final long serialVersionUID = 627185243632457879L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "TURMA_SEQ")
-    @SequenceGenerator(name = "TURMA_SEQ", sequenceName = "TURMA_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
 

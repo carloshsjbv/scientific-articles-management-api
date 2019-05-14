@@ -26,7 +26,7 @@ public class Role implements GrantedAuthority {
     @JsonIgnore
     private String authority;
 
-    @ManyToMany // Várias permissoes para vários usuários.
+    @ManyToMany (mappedBy = "authority") // Várias permissoes para vários usuários.
     @Column(name = "USUARIOID")
     @JsonIgnore
     private List<UsuarioEntity> usuarios;
