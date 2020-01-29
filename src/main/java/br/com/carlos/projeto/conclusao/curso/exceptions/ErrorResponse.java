@@ -2,44 +2,47 @@ package br.com.carlos.projeto.conclusao.curso.exceptions;
 
 import java.util.List;
 
-/**
- *
- * @author Carlos H
- */
-public class ErrorResponse {
+public class ErrorResponse
+{
 
-    private final String message;
-    private final int code;
-    private final String status;
-    private final String objectName;
-    private final List<ObjectError> errors;
+	private final String message;
+	private final int code;
+	private final String status;
+	private final String objectName;
+	private final List<ObjectError> errors;
 
-    public ErrorResponse(String message, int code, String status, String objectName, List<ObjectError> errors) {
-        this.message = message;
-        this.code = code;
-        this.status = status;
-        this.objectName = objectName;
-        this.errors = errors;
-    }
+	public ErrorResponse(String message, int code, String status, String objectName, List<ObjectError> errors)
+	{
+		this.message = message;
+		this.code = code;
+		this.status = status;
+		this.objectName = objectName;
+		this.errors = errors;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage()
+	{
+		return message;
+	}
 
-    public int getCode() {
-        return code;
-    }
+	public int getCode()
+	{
+		return code;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public String getStatus()
+	{
+		return status;
+	}
 
-    public String getObjectName() {
-        return objectName;
-    }
+	public String getObjectName()
+	{
+		return objectName;
+	}
 
-    public List<ObjectError> getErrors() {
-        return errors;
-    }
+	public List<ObjectError> getErrors()
+	{
+		return errors;
+	}
 
 }

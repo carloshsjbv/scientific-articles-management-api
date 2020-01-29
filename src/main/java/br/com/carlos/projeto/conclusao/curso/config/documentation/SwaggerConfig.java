@@ -16,46 +16,38 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Classe de configuração Swagger
+ * Swagger Config
  *
  * @author Carlos H
  */
 @EnableSwagger2
 @Configuration
-public class SwaggerConfig extends WebMvcConfigurationSupport {
+public class SwaggerConfig extends WebMvcConfigurationSupport
+{
 
-    @Bean
-    public Docket repositorioInstitucionalApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.carlos.projeto.conclusao.curso"))
-                .paths(PathSelectors.any())
-                .build()
-                .apiInfo(metaData());
-    }
+	@Bean
+	public Docket repositorioInstitucionalApi()
+	{
+		return new Docket(DocumentationType.SWAGGER_2).select()
+				.apis(RequestHandlerSelectors.basePackage("br.com.carlos.projeto.conclusao.curso"))
+				.paths(PathSelectors.any()).build().apiInfo(metaData());
+	}
 
-    private ApiInfo metaData() {
-        ApiInfo apiInfo = new ApiInfo(
-                "Repositório institucional",
-                "Repositório institucional de artigos acadêmicos",
-                "1.0.0",
-                "Terms of Srevice",
-                new Contact("Carlos Henrique Francisco", "", "carloshsjbv@gmail.com"),
-                "Apache License Version 2.0",
-                "https://www.apache.org/licenses/LICENSE-2.0",
-                new ArrayList<>()
-        );
+	private ApiInfo metaData()
+	{
+		ApiInfo apiInfo = new ApiInfo("Repositório institucional", "Repositório institucional de artigos acadêmicos",
+				"1.0.0", "Terms of Srevice", new Contact("Carlos Henrique Francisco", "", "carloshsjbv@gmail.com"),
+				"Apache License Version 2.0", "https://www.apache.org/licenses/LICENSE-2.0", new ArrayList<>());
 
-        return apiInfo;
-    }
+		return apiInfo;
+	}
 
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("documentacao.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
+	@Override
+	protected void addResourceHandlers(ResourceHandlerRegistry registry)
+	{
+		registry.addResourceHandler("documentacao.html").addResourceLocations("classpath:/META-INF/resources/");
 
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-    }
+	}
 }

@@ -15,52 +15,48 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-/**
- *
- * @author Carlos H
- */
-public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+public class JWTAuthorizationFilter extends BasicAuthenticationFilter
+{
 
-    private final ImplementsUserDetailsService userDetailsService;
+	private final ImplementsUserDetailsService userDetailsService;
 
-    public JWTAuthorizationFilter(
-            AuthenticationManager authenticationManager,
-            ImplementsUserDetailsService userDetailsService
-    ) {
-        super(authenticationManager);
-        this.userDetailsService = userDetailsService;
-    }
+	public JWTAuthorizationFilter(AuthenticationManager authenticationManager,
+			ImplementsUserDetailsService userDetailsService)
+	{
+		super(authenticationManager);
+		this.userDetailsService = userDetailsService;
+	}
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader(HEADER_STRING);
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+			throws IOException, ServletException
+	{
+		String header = request.getHeader(HEADER_STRING);
 
-        if (header == null || !header.startsWith(TOKEN_PREFIX)) {
-            chain.doFilter(request, response);
-            return;
-        }
+		if (header == null || !header.startsWith(TOKEN_PREFIX))
+		{
+			chain.doFilter(request, response);
+			return;
+		}
 
-        UsernamePasswordAuthenticationToken authenticationToken = getAuthenticationToken(request);
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-        chain.doFilter(request, response);
+		UsernamePasswordAuthenticationToken authenticationToken = getAuthenticationToken(request);
+		SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+		chain.doFilter(request, response);
 
-    }
+	}
 
-    private UsernamePasswordAuthenticationToken getAuthenticationToken(HttpServletRequest request) {
-        String token = request.getHeader(HEADER_STRING);
-        if (token == null) {
-            return null;
-        }
+	private UsernamePasswordAuthenticationToken getAuthenticationToken(HttpServletRequest request)
+	{
+		String token = request.getHeader(HEADER_STRING);
+		if (token == null)
+		{
+			return null;
+		}
 
-        String username = Jwts
-                .parser()
-                .setSigningKey(SECRET)
-                .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-                .getBody()
-                .getSubject();
+		String username = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody()
+				.getSubject();
 
-        UserDetails ud = userDetailsService.loadUserByUsername(username);
-        return ud != null
-                ? new UsernamePasswordAuthenticationToken(username, null, ud.getAuthorities()) : null;
-    }
+		UserDetails ud = userDetailsService.loadUserByUsername(username);
+		return ud != null ? new UsernamePasswordAuthenticationToken(username, null, ud.getAuthorities()) : null;
+	}
 }

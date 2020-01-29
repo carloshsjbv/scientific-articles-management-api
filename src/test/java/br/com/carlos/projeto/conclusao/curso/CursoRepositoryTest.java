@@ -1,7 +1,7 @@
 package br.com.carlos.projeto.conclusao.curso;
 
-import br.com.carlos.projeto.conclusao.curso.model.entity.CursoEntity;
-import br.com.carlos.projeto.conclusao.curso.repository.CursoRepository;
+import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
+import br.com.carlos.projeto.conclusao.curso.repository.CourseRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Rule;
 import org.junit.Test;
@@ -19,76 +19,71 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class CursoRepositoryTest {
+public class CursoRepositoryTest
+{
 
-    @Autowired
-    private CursoRepository cursoRepository;
+	@Autowired
+	private CourseRepository cursoRepository;
 
-    @Rule
-    public ExpectedException retorno = ExpectedException.none();
+	@Rule
+	public ExpectedException retorno = ExpectedException.none();
 
-    @Test
-    public void criacaoDevePersistirDados() {
-        CursoEntity curso = new CursoEntity(0, "Engenharia de Software", "ES", "Tecnologia");
+	@Test
+	public void criacaoDevePersistirDados()
+	{
+		CourseModel curso = new CourseModel(0, "Engenharia de Software", "ES", "Tecnologia");
 
-        this.cursoRepository.save(curso);
+		this.cursoRepository.save(curso);
 
-        Assertions.assertThat(curso.getId()).isNotNull();
-        Assertions.assertThat(curso.getNome()).isEqualTo("Engenharia de Software");
-        Assertions.assertThat(curso.getAcronimo()).isEqualTo("ES");
-        Assertions.assertThat(curso.getArea()).isEqualTo("Tecnologia");
-    }
+		Assertions.assertThat(curso.getId()).isNotNull();
+		Assertions.assertThat(curso.getName()).isEqualTo("Engenharia de Software");
+		Assertions.assertThat(curso.getAcronym()).isEqualTo("ES");
+		Assertions.assertThat(curso.getArea()).isEqualTo("Tecnologia");
+	}
 
-    @Test
-    public void deleteDeveRemoverCurso() {
-        CursoEntity curso = new CursoEntity(0, "Engenharia de Software", "ES", "Tecnologia");
-        this.cursoRepository.save(curso);
-        this.cursoRepository.delete(curso);
+	@Test
+	public void deleteDeveRemoverCurso()
+	{
+		CourseModel curso = new CourseModel(0, "Engenharia de Software", "ES", "Tecnologia");
+		this.cursoRepository.save(curso);
+		this.cursoRepository.delete(curso);
 
-        Assertions.assertThat(this.cursoRepository.findById(curso.getId())).isEmpty();
-    }
+		Assertions.assertThat(this.cursoRepository.findById(curso.getId())).isEmpty();
+	}
 
-    @Test
-    public void updateDeveAtualizarPersistirCurso() {
-        CursoEntity curso = new CursoEntity(0, "Engenharia de Software", "ES", "Tecnologia");
-        this.cursoRepository.save(curso);
+	@Test
+	public void updateDeveAtualizarPersistirCurso()
+	{
+		CourseModel curso = new CourseModel(0, "Engenharia de Software", "ES", "Tecnologia");
+		this.cursoRepository.save(curso);
 
-        System.out.println(curso.toString());
+		System.out.println(curso.toString());
 
-        curso.setNome("Engenharia de Computação");
-        curso.setAcronimo("EC");
+		curso.setName("Engenharia de Computação");
+		curso.setAcronym("EC");
 
-        curso = this.cursoRepository.save(curso);
-        curso = this.cursoRepository.findById(curso.getId()).get();
+		curso = this.cursoRepository.save(curso);
+		curso = this.cursoRepository.findById(curso.getId()).get();
 
-        System.out.println(curso.toString());
+		System.out.println(curso.toString());
 
-        Assertions.assertThat(curso.getNome()).isEqualTo("Engenharia de Computação");
-        Assertions.assertThat(curso.getAcronimo()).isEqualTo("EC");
-    }
+		Assertions.assertThat(curso.getName()).isEqualTo("Engenharia de Computação");
+		Assertions.assertThat(curso.getAcronym()).isEqualTo("EC");
+	}
 
-    @Test
-    public void deveRetornarAcronimoCurso() {
-        CursoEntity curso = new CursoEntity(0, "Engenharia de Software", "ES", "Tecnologia");
-        this.cursoRepository.save(curso);
+	@Test
+	public void deveRetornarAcronimoCurso()
+	{
+		CourseModel curso = new CourseModel(0, "Engenharia de Software", "ES", "Tecnologia");
+		this.cursoRepository.save(curso);
 
-        System.out.println(curso.toString());
+		System.out.println(curso.toString());
 
-        curso = this.cursoRepository.findByAcronimoIgnoreCase(curso.getAcronimo());
+		curso = this.cursoRepository.findByAcronymIgnoreCase(curso.getAcronym());
 
-        System.out.println(curso.toString());
+		System.out.println(curso.toString());
 
-        Assertions.assertThat(curso.getAcronimo()).isEqualTo("ES");
-    }
-
-    // @Test
-    // public void createDeveRetornarConstraintViolationExceptionQuandoNomeNull() {
-    //     retorno.expect(ConstraintViolationException.class);
-    //     //retorno.expectMessage("Não pode ser null");
-
-    //     CursoEntity curso = new CursoEntity(0, null, "ES", "Tecnologia");
-    //     this.cursoRepository.save(curso);
-
-    // }
+		Assertions.assertThat(curso.getAcronym()).isEqualTo("ES");
+	}
 
 }

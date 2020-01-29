@@ -1,549 +1,704 @@
 
-  
-  <div class="container">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-<section>
-      
-<h3>1. Introdu&ccedil;&atilde;o</h3>
-      
-<p>A tarefa de disseminar conhecimento tem como auxiliares as ferramentas e sistemas
-que possibilitam armazenar e disponibilizar artefatos que descrevem trabalhos e pesquisas
-produzidas no meio acad&ecirc;mico.</p>
-      
-<p>Muitas institui&ccedil;&otilde;es de ensino possuem suas pr&oacute;prias bases de publica&ccedil;&otilde;es,
-denominadas como Reposit&oacute;rios Institucionais (RIs), onde pesquisadores s&atilde;o encorajados a
-depositarem seus preprints e postprints com o intuito de aumentar a visibilidade dos
-resultados de suas pesquisas (FURNIVAL &amp; HUBBARD, 2011).</p>
-    
-</section>
-    
-<section>
-      
-<h3>1.1. Justificativa</h3>
-      
-<p>Publicar os resultados alcan&ccedil;ados nos trabalhos de conclus&atilde;o de curso apenas
-internamente, no &acirc;mbito da Institui&ccedil;&atilde;o de Ensino Superior (IES) onde foram realizados, pode
-n&atilde;o proporcionar a divulga&ccedil;&atilde;o e alcance desejados aos projetos apresentados pelos alunos que
-se encontram em processo de finaliza&ccedil;&atilde;o de um curso de gradua&ccedil;&atilde;o. Portanto, a proposta de
-elaborar um portal de publica&ccedil;&otilde;es de trabalhos surgiu da necessidade de tornar o conte&uacute;do de
-tais projetos public&aacute;vel e de facilitar e ampliar a sua divulga&ccedil;&atilde;o na rede mundial de
-computadores, uma vez que se nota o crescimento da mobilidade e da facilidade no acesso &agrave;s
-informa&ccedil;&otilde;es.</p>
-    
-</section>
-    
-<section>
-      
-<h3>1.2. Objetivos</h3>
-      
-<p>Diante da necessidade apresentada, objetiva-se neste trabalho desenvolver uma
-aplica&ccedil;&atilde;o web para a publica&ccedil;&atilde;o de trabalhos de conclus&atilde;o de curso, desenvolvidos por alunos
-em ambiente acad&ecirc;mico. Prev&ecirc;-se neste sistema que os alunos possam se cadastrar, submeter
-suas publica&ccedil;&otilde;es para divulga&ccedil;&atilde;o na internet, por meio de um portal espec&iacute;fico, e atrav&eacute;s do
-mesmo efetuar consultas sobre as publica&ccedil;&otilde;es j&aacute; dispon&iacute;veis.</p>
-      
-<p>Para viabilizar a constru&ccedil;&atilde;o do sistema web apresentado, &eacute; proposto fazer uso de
-t&eacute;cnicas de integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es, principalmente para viabilizar a obten&ccedil;&atilde;o do arquivo
-correspondente que ser&aacute; utilizado como base para a transforma&ccedil;&atilde;o do documento
-originalmente publicado em um formato compat&iacute;vel com as normas estabelecidas pelo &oacute;rg&atilde;o
-regulamentador da internet (W3C - World Wide Web Consortium), para que finalmente possa
-Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 2
-ser publicado em uma p&aacute;gina web onde o trabalho ficar&aacute; dispon&iacute;vel para visualiza&ccedil;&atilde;o e
-download.</p>
-      
-<p>Com essa aplica&ccedil;&atilde;o, almeja-se colaborar para tornar p&uacute;blico os trabalhos realizados
-por alunos de uma IES, fazendo com que o conhecimento adquirido possa ser cada vez mais
-difundido.</p>
-    
-</section>
-    
-<section>
-      
-<h3>1.3. Objetivos Espec&iacute;ficos</h3>
-      
-<p>Para que o desenvolvimento da aplica&ccedil;&atilde;o seja realizado, objetiva-se tamb&eacute;m:
- Analisar as ferramentas necess&aacute;rias que poder&atilde;o ser &uacute;teis na convers&atilde;o dos
-textos originais para o formato a ser empregado na base de publica&ccedil;&otilde;es.
- Implementar as integra&ccedil;&otilde;es entre os softwares necess&aacute;rios.</p>
-    
-</section>
-    
-<section>
-      
-<h3>1.4. Problematiza&ccedil;&atilde;o</h3>
-      
-<p>Tomando como premissa o conceito de que um trabalho de conclus&atilde;o de curso &eacute;
-rigorosamente analisado por profissionais da &aacute;rea t&eacute;cnica e cient&iacute;fica por diversas vezes antes
-de ser dado como finalizado, e que tamb&eacute;m segue &agrave; risca os padr&otilde;es estabelecidos pela ABNT
-(Associa&ccedil;&atilde;o Brasileira de Normas T&eacute;cnicas), ou pela pr&oacute;pria institui&ccedil;&atilde;o de ensino, torna-se
-vi&aacute;vel a ideia da constru&ccedil;&atilde;o de um software que reconhe&ccedil;a padr&otilde;es estruturais de texto e
-trabalhe em fun&ccedil;&atilde;o deles para derivar em uma sa&iacute;da com conte&uacute;do manipul&aacute;vel, prop&iacute;cio para
-publica&ccedil;&atilde;o em diversos formatos.</p>
-      
-<p>O cen&aacute;rio atual evidencia que a UNIFAE ainda n&atilde;o disp&otilde;e de meios que
-proporcionem &agrave; comunidade em geral, que deseja conhecer mais sobre o potencial cient&iacute;fico
-da institui&ccedil;&atilde;o, um ambiente virtual de pesquisa que armazene e tamb&eacute;m possibilite a consulta
-de trabalhos executados por seus alunos. Logo, presume-se, que a cria&ccedil;&atilde;o de um portal que se
-encarregue de executar tais pap&eacute;is, poderia transformar a visibilidade externa da faculdade e
-tamb&eacute;m dos trabalhos de seus graduandos.</p>
-      
-<p>Portanto o desenvolvimento de um software que fa&ccedil;a o interm&eacute;dio entre o processo de
-reconhecimento, tratamento, reestrutura&ccedil;&atilde;o de um documento cient&iacute;fico para publica&ccedil;&atilde;o
-online, e a cria&ccedil;&atilde;o de um portal que armazene este conte&uacute;do, vem de encontro com as
-necessidades da universidade, que visa, atrav&eacute;s do conhecimento transmitido na rela&ccedil;&atilde;o
-Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 3
-aluno-professor, formar profissionais cada vez mais aptos e dispostos a buscar solu&ccedil;&otilde;es em
-favor das car&ecirc;ncias da sociedade.</p>
-    
-</section>
-    
-<section>
-      
-<h3>2. Desenvolvimento</h3>
-    
-</section>
-    
-<section>
-      
-<h3>2.1. Referencial Te&oacute;rico</h3>
-    
-</section>
-    
-<section>
-      
-<h3>2.1.1. Integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es</h3>
-      
-<p>O conceito de integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es, definido por MARTINS (2005) como a
-&ldquo;partilha de informa&ccedil;&otilde;es e dados entre aplica&ccedil;&otilde;es em rede ou fontes de dados&rdquo;, corrobora com
-a ideia de que com o aumento da quantidade de Sistemas Legados, Web Services, e softwares
-em geral, que inevitavelmente com o passar do tempo acabam por perder efici&ecirc;ncia ou
-tornam-se obsoletos, muitas corpora&ccedil;&otilde;es tem adotado estrat&eacute;gias que viabilizam a integra&ccedil;&atilde;o
-de novos sistemas, ao inv&eacute;s da cria&ccedil;&atilde;o de novos softwares que abranjam de forma geral o
-escopo de um projeto.</p>
-      
-<p>Tais estrat&eacute;gias s&atilde;o denominadas EAI (Enterprise Application Integration), que
-consistem em um conjunto de boas pr&aacute;ticas e padr&otilde;es que auxiliam desenvolvedores e
-profissionais da &aacute;rea da tecnologia no processo de integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es.</p>
-      
-<p>
-        De acordo com
-        <i>RUH, MAGINNIS &amp; BROWN (2002</i>
-        , p. 137) a ado&ccedil;&atilde;o da abordagem
-EAI, torna-se mais vi&aacute;vel para corpora&ccedil;&otilde;es pois a substitui&ccedil;&atilde;o total de um sistema em
-funcionamento pode ser arriscada, tanto do ponto de vista econ&ocirc;mico quanto do ponto de vista
-t&eacute;cnico, visto que o processo de desenvolvimento exige grande investimento, profissionais
-capacitados, al&eacute;m de tempo at&eacute; sua finaliza&ccedil;&atilde;o.
-      </p>
-      
-<p>Diante disto, as corpora&ccedil;&otilde;es tem optado pelo desenvolvimento de API&rsquo;s (Application
-Programming Interface), que s&atilde;o respons&aacute;veis por implementar novas tecnologias com o
-intuito de complementar os requisitos n&atilde;o contemplados pela aplica&ccedil;&atilde;o anterior, al&eacute;m de
-proporcionar a comunica&ccedil;&atilde;o entre sistemas distintos, independentes de linguagem de
-programa&ccedil;&atilde;o ou arquitetura de software utilizadas.</p>
-      
-<p>Dentre os diversos padr&otilde;es e t&eacute;cnicas de integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es presentes no
-mercado, n&atilde;o &eacute; correto afirmar que existem t&eacute;cnicas melhores, que se sobressaiam ante as
-demais. Todas possuem suas vantagens e desvantagens, e cabe &agrave; equipe respons&aacute;vel pela
-Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 4
-integra&ccedil;&atilde;o escolher qual delas &eacute; mais apropriada para a demanda (SORDI &amp; MARINHO,
-2007).</p>
-      
-<p>De acordo com as abordagens discutidas por SORDI &amp; MARINHO (2007), os
-recursos de integra&ccedil;&atilde;o de sistema s&atilde;o divididos em tr&ecirc;s mecanismos: mensagem (messaging),
-chamadas (call interface) e transfer&ecirc;ncia de arquivos (data access/file transfer).</p>
-      
-<p>Para o desenvolvimento do presente trabalho, utilizou-se o mecanismo de chamadas,
-aplicado por meio de um web service que atrav&eacute;s da execu&ccedil;&atilde;o de requisi&ccedil;&otilde;es HTTP,
-possibilitou o envio e recebimento de dados e arquivos, bem como a comunica&ccedil;&atilde;o com a
-plataforma OTS.</p>
-    
-</section>
-    
-<section>
-      
-<h3>2.1.2. Protocolo HTTP e API&rsquo;s Restful</h3>
-      
-<p>HRADIL &amp; SKLEN&Aacute;K (2017) ressalta que grande parte das aplica&ccedil;&otilde;es desenvolvidas
-atualmente utilizam a WEB como meio de comunica&ccedil;&atilde;o com o usu&aacute;rio, uma vez que a
-necessidade de acesso aos dados utilizando os mais variados tipos de dispositivos tem se
-tornado cada vez maior.</p>
-      
-<p>Dentre as diversas formas de implenta&ccedil;&atilde;o de web services, destaca-se o estilo
-arquitetural REST (Representational State Transfer) no desenvolvimento desta aplica&ccedil;&atilde;o, pois
-proporciona um conjunto padronizado de requisi&ccedil;&otilde;es e respostas enviadas a um servidor,
-viabilizando assim, uma comunica&ccedil;&atilde;o clara entre sistemas diferentes. A arquitetura REST se
-baseia no uso do protocolo HTTP (Hypertext Transfer Protocol), considerado como o
-protocolo b&aacute;sico de transfer&ecirc;ncia de dados e arquivos de hiperm&iacute;dia.</p>
-      
-<p>O protocolo HTTP &eacute; dividido em m&eacute;todos, que permitem a realiza&ccedil;&atilde;o de diferentes
-tipos de a&ccedil;&otilde;es via requisi&ccedil;&atilde;o. S&atilde;o utilizadas no desenvolvimento da aplica&ccedil;&atilde;o proposta os
-seguintes m&eacute;todos e finalidades:
- POST: grava&ccedil;&atilde;o de dados;
- GET: consulta de dados;
- PUT: altera&ccedil;&atilde;o de dados existentes;
- DELETE: remo&ccedil;&atilde;o de dados do servidor.</p>
-    
-</section>
-    
-<section>
-      
-<h3>2.1.3. Extra&ccedil;&atilde;o de informa&ccedil;&otilde;es de arquivos estruturados</h3>
-      
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 5</p>
-      
-<p>
-        A abordagem da extra&ccedil;&atilde;o de informa&ccedil;&atilde;o de documentos de textos estruturados &eacute; um
-conceito bastante abordado na &aacute;rea da Tecnologia da Informa&ccedil;&atilde;o. Atrelado a este conceito,
-podemos observar que em grande parte dos casos, faz-se necess&aacute;rio o reconhecimento e
-extra&ccedil;&atilde;o de conte&uacute;do para a obten&ccedil;&atilde;o de dados estruturados, que quando aplicados em
-determinado cen&aacute;rio, passam a ter maior significado sem&acirc;ntico para posterior manipula&ccedil;&atilde;o e
-obten&ccedil;&atilde;o dos chamados metadados, que por sua vez, resumem-se na ideia de &ldquo;dado sobre o
-dado&rdquo; ou na &ldquo;cataloga&ccedil;&atilde;o do dado ou descri&ccedil;&atilde;o do recurso eletr&ocirc;nico.&rdquo;, de acordo com
-        <i>(SOUZA, VENDRUSCULO &amp; MELO, 2000)</i>
-        .
-      </p>
-      
-<p>
-        Ap&oacute;s serem extra&iacute;dos, tais metadados passam a ser tratados como estruturas sujeitas a
-processamento computacional e podem ser utilizados para a cria&ccedil;&atilde;o de conte&uacute;do em diversos
-formatos, inclusive os voltados &agrave; publica&ccedil;&atilde;o online. Os metadados, segundo
-        <i>VANTI (2010)</i>
-        ,
-tamb&eacute;m s&atilde;o utilizados para a produ&ccedil;&atilde;o de dados estat&iacute;sticos voltados &agrave; medi&ccedil;&atilde;o de &iacute;ndices de
-produtividade de centros de pesquisa, identificando &aacute;reas e cursos que necessitam de uma
-abordagem diferenciada, visando o aumento de seu potencial, al&eacute;m de tamb&eacute;m serem
-utilizados como ferramenta auxiliar de gest&atilde;o para a aloca&ccedil;&atilde;o de recursos dentro de uma
-institui&ccedil;&atilde;o de ensino.
-      </p>
-      
-<p>Este processo de extra&ccedil;&atilde;o faz uso de diversos softwares de automa&ccedil;&atilde;o, que partindo
-dos documentos de entrada, resultam em arquivos de formatos espec&iacute;ficos, bem estruturados e
-especificamente criados para facilitar o processo de organiza&ccedil;&atilde;o e identifica&ccedil;&atilde;o do conte&uacute;do.
-Dentre os principais formatos de arquivos com tais caracter&iacute;sticas, destacam-se o Text
-Encoding Initiative (TEI) e o Extensible Markup Language (XML).</p>
-      
-<p>
-        Os documentos TEI s&atilde;o definidos como uma estrutura de arquivo de texto, utilizada
-para preservar o conte&uacute;do atrav&eacute;s da cria&ccedil;&atilde;o de uma estrutura de identifica&ccedil;&atilde;o, que viabiliza a
-leitura por meio de softwares espec&iacute;ficos, voltados ao reconhecimento e extra&ccedil;&atilde;o de textos. A
-codifica&ccedil;&atilde;o TEI de um texto permite criar um documento com marca&ccedil;&otilde;es para uso em
-programas especificamente desenvolvidos para a an&aacute;lise textual, que reconhecem os objetos e
-seus significados atrav&eacute;s das tags TEI.
-        <i>(RANKIN, 2015 p. 5)</i>
-        .
-      </p>
-      
-<p>Os documentos XML podem ser determinados como uma linguagem de marca&ccedil;&atilde;o
-com a qual pode ser especificada a forma dos dados no documento e defini&ccedil;&otilde;es sem&acirc;nticas.
-&ldquo;Um arquivo eletr&ocirc;nico XML pode conter, simultaneamente, dados e a descri&ccedil;&atilde;o da estrutura
-do documento, atrav&eacute;s do DTD-Data Type Definitions (gram&aacute;ticas que conferem estrutura ao
-documento XML).&rdquo; (ALMEIDA, 2002, p. 7).</p>
-      
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 6</p>
-    
-</section>
-    
-<section>
-      
-<h3>2.1.4. Open Typesetting Stack (OTS)</h3>
-      
-<p>A API OTS &eacute; um servi&ccedil;o WEB open-source, mantido pela iniciativa Public
-Knowledge Project (PKP)1, que visa efetuar a convers&atilde;o de documentos para o formato
-XML-JATS, de maneira mais intuitiva que outras ferramentas, com abordagem simples, e
-entrega de uma interface gr&aacute;fica de f&aacute;cil usabilidade, conforme Figura 1.</p>
-      
-<p>Figura 1. Demonstra&ccedil;&atilde;o da interface de submiss&otilde;es &agrave; plataforma Open Typesetting Stack.</p>
-      
-<p>Fonte: Open Typesetting Stack2.</p>
-      
-<p>Segundo GARNETT et al. (2017), esta ferramenta utiliza diversas bibliotecas de
-acesso aberto (como por exemplo, o software meTypeset) para a realiza&ccedil;&atilde;o do processo de
-convers&atilde;o de um documento. No processamento realizado pelo software meTypeset, de
-acordo com GARNETT, ALPERIN &amp; WILLINSKY (2015), s&atilde;o empregadas grandes
-1 Iniciativa Open Source desenvolvedora de solu&ccedil;&otilde;es para aux&iacute;lio &agrave; profissionais no ramo de
-publica&ccedil;&otilde;es cient&iacute;ficas. Dispon&iacute;vel em: https://pkp.sfu.ca/.</p>
-      
-<section>
-        
-<h4>2 http://pkp-xml-demo.lib.sfu.ca/</h4>
-        
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 7
-quantidades de estruturas de dados que utilizam princ&iacute;pios de heur&iacute;stica e aplica&ccedil;&atilde;o de
-parseamento baseado em l&oacute;gica fuzzy, partindo de um documento DOCX, passando pela
-transforma&ccedil;&atilde;o para o formato TEI e posterior obten&ccedil;&atilde;o de um arquivo XML-JATS.</p>
-        
-<p>Na Figura 2 &eacute; demonstrado o fluxo de processamento da ferramenta meTypeSet, na
-qual pode ser observado que a entrada pode ser constitu&iacute;da de documentos contendo textos
-fornecidos a partir de diferentes ferramentas como Microsoft Office Word, ou LibreOffice. A
-partir dela, conforme mencionado, pode ser obtido um arquivo equivalente no formato XML.</p>
-        
-<section>
-          
-<h5>Figura 2. Fluxo de processamento da ferramenta meTypeset.</h5>
-          
-<p>Fonte: Eve (2015).</p>
-          
-<p>A API OTS foi escolhida neste trabalho, pois seu &iacute;ndice de assertividade e
-compatibilidade dos documentos de sa&iacute;da chega a uma m&eacute;dia de 80% em rela&ccedil;&atilde;o a padr&otilde;es
-exigidos pela especifica&ccedil;&atilde;o XML-JATS.</p>
-        
-</section>
-      
-</section>
-    
-</section>
-    
-<section>
-      
-<h3>2.2. Materiais e M&eacute;todos 2.2.1. Front-end</h3>
-      
-<p>O software proposto foi constru&iacute;do segundo a arquitetura Cliente-Servidor e para a
-apresenta&ccedil;&atilde;o dos recursos utilizados durante o desenvolvimento, podemos agrup&aacute;-los em
-categorias, para melhor entendimento:</p>
-      
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 8</p>
-      
-<p>
-        O front-end &eacute; parte relacionada &agrave; exibi&ccedil;&atilde;o do software em uma interface web, e para o
-desenvolvimento desta etapa foram utilizados conceitos b&aacute;sicos da &aacute;rea de desenvolvimento
-web como HTML (HyperText Markup Language) e CSS (Cascading Style Sheets) e
-Javascript somados &agrave; utiliza&ccedil;&atilde;o do framework Angular em sua vers&atilde;o 6.1.7. A escolha do
-framework Angular deu-se devido sua popularidade, performance e especialmente &agrave; sua
-grande comunidade de desenvolvedores ao redor do mundo que destinam parte do seu tempo
-na cria&ccedil;&atilde;o de solu&ccedil;&otilde;es e plugins que facilitam a vida dos desenvolvedores que a utilizam. Tais
-fatores fazem do Angular um dos melhores frameworks Javascript da atualidade
-        <i>SESHADRI,
-S. (2018</i>
-        ).
-      </p>
-      
-<p>2.2.2. Back-end</p>
-      
-<p>Nesta categoria, do lado servidor, foi utilizada a plataforma OTS para convers&atilde;o dos
-documentos WORD em XML, HTML ou PDF. Para isso, foi necess&aacute;ria a implementa&ccedil;&atilde;o de
-web services que permitissem a integra&ccedil;&atilde;o desta plataforma com o software em
-desenvolvimento. Para a implementa&ccedil;&atilde;o dos web services, foi escolhida a arquitetura REST.
-Para a constru&ccedil;&atilde;o desta integra&ccedil;&atilde;o e das regras de neg&oacute;cio presentes no back-end foi utilizada
-a linguagem JAVA vers&atilde;o 8 em conjunto com o framework Spring Boot em sua vers&atilde;o 2.0.4,
-devido sua facilidade em acelerar o processo de configura&ccedil;&atilde;o de uma aplica&ccedil;&atilde;o Spring
-(ANTONOV, 2018).</p>
-    
-</section>
-    
-<section>
-      
-<h3>2.2.3. Ferramentas estruturais e de apoio</h3>
-      
-<p>Nesta categoria, ser&atilde;o listadas as ferramentas que tornaram mais f&aacute;ceis a intera&ccedil;&atilde;o e o
-gerenciamento do projeto:
- Controle de vers&otilde;es: utilizou-se GIT somado &agrave; plataforma de hospedagem de
-c&oacute;digos-fonte Bitbucket3.
- Organiza&ccedil;&atilde;o de tarefas do projeto: utilizou-se o Trello4, que aliado &agrave;
-metodologia &aacute;gil Kanban, pode proporcionar uma excelente vis&atilde;o das tarefas a
-serem executadas.</p>
-      
-<section>
-        
-<h4>3 https://bitbucket.org</h4>
-      
-</section>
-      
-<section>
-        
-<h4>4 https://trello.com/</h4>
-        
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 9
-
-</p>
-        
-<p>Armazenamento de dados: utilizou-se o SGBD Oracle Database Express
-Edition 11g Release 2, que proporciona ao desenvolvedor de forma gratuita
-facilidade na administra&ccedil;&atilde;o, manuten&ccedil;&atilde;o5.</p>
-        
-<p>Armazenamento dos documentos: utilizou-se o sistema de arquivos do
-ambiente em que o sistema est&aacute; hospedado. A estrat&eacute;gia utilizada visa a
-economia no armazenamento de dados, visto que a vers&atilde;o de SGBD &eacute; uma
-vers&atilde;o gratuita e possui um limite de armazenamento, portanto, foram
-utilizados campos VARCHAR(2) destinados ao armazenamento de refer&ecirc;ncias
-ao diret&oacute;rio em que o arquivo foi armazenado.</p>
-      
-</section>
-    
-</section>
-    
-<section>
-      
-<h3>3. Resultados e Discuss&otilde;es</h3>
-      
-<p>Como resultado deste trabalho, foi constru&iacute;do um software que atende aos seguintes
-requisitos funcionais:
- Cadastro de alunos;
- Cadastro de cursos e turmas;
- Cadastro de submiss&otilde;es de documentos referentes a artigos ou trabalhos
-acad&ecirc;micos;
- Listagem de submiss&otilde;es de documentos por curso e turma;
- Listagem individual de um documento submetido, em uma p&aacute;gina HTML,
-contendo as informa&ccedil;&otilde;es b&aacute;sicas de um artigo (t&iacute;tulo, autores, resumo e
-palavras-chave), bem como links para download do documento na vers&atilde;o PDF.</p>
-      
-<p>A principal integra&ccedil;&atilde;o implementada neste sistema foi realizada com o
-desenvolvimento de um web service para permitir que o usu&aacute;rio realize a submiss&atilde;o de
-documentos cient&iacute;ficos estruturados no formato Word e que o software web obtenha como
-retorno, desta requisi&ccedil;&atilde;o, arquivos nos formatos HTML, XML e PDF que s&atilde;o produzidos pela
-plataforma OTS. Tais documentos s&atilde;o posteriormente disponibilizados online pelo software
-web, conforme ilustrado na Figura 3.
-Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 10</p>
-      
-<section>
-        
-<h4>Figura 3. Diagrama de fluxo de arquivos no processo de submiss&atilde;o.</h4>
-        
-<p>O processo de submiss&atilde;o d&aacute;-se da seguinte forma:
-i. O usu&aacute;rio submete o arquivo Word ao sistema.
-ii. A submiss&atilde;o &eacute; armazenada em uma fila tempor&aacute;ria no sistema, que ao fim do
-dia atrav&eacute;s de um scheduler de tarefas, comp&otilde;e o lote a ser enviado a
-plataforma OTS. Os arquivos s&atilde;o enviados um a um via requisi&ccedil;&atilde;o HTTP
-(m&eacute;todo POST) &agrave; plataforma OTS, que se encarrega de converter o documento
-para outros formatos.
-iii. Devido a uma conven&ccedil;&atilde;o adotada no desenvolvimento deste projeto, tr&ecirc;s horas
-ap&oacute;s a submiss&atilde;o, o sistema faz requisi&ccedil;&otilde;es &agrave; plataforma (tamb&eacute;m atrav&eacute;s da
-utiliza&ccedil;&atilde;o de um scheduler de tarefas), para verificar o status do processo de
-convers&atilde;o. Tais status est&atilde;o dispon&iacute;veis para consulta na documenta&ccedil;&atilde;o do
-OTS no Github6.
-iv. Caso os documentos j&aacute; tenham sido processados, o sistema solicita via
-requisi&ccedil;&atilde;o HTTP o retorno dos arquivos da plataforma, que os envia como
-resposta.</p>
-        
-<section>
-          
-<h5>6 https://github.com/pkp/ots</h5>
-          
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 11
-v. Os arquivos vindos do OTS s&atilde;o armazenados no sistema de arquivos e Sistema
-de Gerenciamento de Banco de Dados (SGBD).</p>
-          
-<p>Para a execu&ccedil;&atilde;o do processo de envio dos arquivos via requisi&ccedil;&atilde;o HTTP, utilizou-se a
-impementa&ccedil;&atilde;o de uma fila de submiss&otilde;es, onde os arquivos submetidos durante o dia s&atilde;o
-enfileirados, e devido a uma conven&ccedil;&atilde;o adotada na implementa&ccedil;&atilde;o do projeto, definiu-se que
-seus itens seriam enviados em uma requisi&ccedil;&atilde;o HTTP POST em determinado hor&aacute;rio, e que
-ap&oacute;s tr&ecirc;s horas o sistema faria outra requisi&ccedil;&atilde;o HTTP, para obter os arquivos anteriormente
-enviados (GET). Tal implementa&ccedil;&atilde;o tornou-se poss&iacute;vel atrav&eacute;s da utiliza&ccedil;&atilde;o de um campo do
-tipo boolean pr&eacute; definido na esturutra da tabela de submiss&otilde;es, que assumiu o papel de flag,
-possibilitando a indica&ccedil;&atilde;o se o arquivo havia ou n&atilde;o sido enviado &agrave; plataforma.</p>
-          
-<p>As requisi&ccedil;&otilde;es HTTP GET utilizaram como par&acirc;metro de identifica&ccedil;&atilde;o o campo
-OTS_ID presente na tabela de submiss&otilde;es. Este campo corresponde ao identificador recebido
-por cada publica&ccedil;&atilde;o no momento em que a requisi&ccedil;&atilde;o &eacute; recebida pela plataforma OTS.</p>
-          
-<p>Ao t&eacute;rmino do desenvolvimento deste trabalho, foi poss&iacute;vel obter a integra&ccedil;&atilde;o de um
-novo software com a plataforma OTS, inicialmente vislumbrada para desempenhar a
-importante fun&ccedil;&atilde;o de facilitar a divulga&ccedil;&atilde;o das pesquisas realizadas na institui&ccedil;&atilde;o, e a
-obten&ccedil;&atilde;o dos seguintes resultados:
- Realiza&ccedil;&atilde;o de requisi&ccedil;&otilde;es HTTP com o m&eacute;todo POST &agrave; plataforma OTS,
-permitindo com que o usu&aacute;rio submeta arquivos no formato Word e PDF.
- Realiza&ccedil;&atilde;o de requisi&ccedil;&otilde;es HTTP com o m&eacute;todo GET &agrave; plataforma OTS,
-viabilizando a consulta ao status de processamento dos arquivos submetidos e
-tamb&eacute;m a obten&ccedil;&atilde;o dos arquivos processados.
- Implementa&ccedil;&atilde;o de uma interface voltada ao reposit&oacute;rio de artigos de uma
-institui&ccedil;&atilde;o, que permite o cadastro de alunos, cursos, turmas e submiss&otilde;es de
-artigos, e possibilita ao p&uacute;blico o acesso ao conte&uacute;do cient&iacute;fico submetido.</p>
-          
-<p>Diante dos resultados obtidos, constatou-se que a plataforma OTS cumpre a proposta
-definida por seus criadores no que tange ao cen&aacute;rio de transforma&ccedil;&atilde;o de um arquivo Word ou
-PDF em formatos diversos. Entretanto, &eacute; importante ressaltar que a qualidade obtida nos
-documentos de sa&iacute;da, vindos da plataforma, depende diretamente do arquivo fonte, e da forma
-pelo qual &eacute; estruturado e, embora tenha uma assertividade de 80%, algumas vezes o OTS
-produz resultados que n&atilde;o s&atilde;o suficientemente satisfat&oacute;rios e que precisam de uma solu&ccedil;&atilde;o
-supervisonada ao t&eacute;rmino de seu trabalho, conforme mencionado em GARNETT et al. (2017)
-Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 12</p>
-        
-</section>
-      
-</section>
-    
-</section>
-    
-<section>
-      
-<h3>4. Considera&ccedil;&otilde;es Finais</h3>
-      
-<p>O desenvolvimento do presente estudo possibilitou a cria&ccedil;&atilde;o de uma aplica&ccedil;&atilde;o voltada
-&agrave; preserva&ccedil;&atilde;o de artigos cient&iacute;ficos desenvolvidos por uma institui&ccedil;&atilde;o de ensino, atrav&eacute;s da
-utiliza&ccedil;&atilde;o de princ&iacute;pios de integra&ccedil;&atilde;o de software, proporcionando &agrave; comunidade cient&iacute;fica e
-ao p&uacute;blico em geral, acesso ao conte&uacute;do produzido por alunos de gradua&ccedil;&atilde;o, com o intuito da
-difus&atilde;o do conte&uacute;do cient&iacute;fico e aumento da visibilidade da institui&ccedil;&atilde;o frente &agrave; sociedade.</p>
-      
-<p>O presente trabalho possui sua aplica&ccedil;&atilde;o voltada ao &acirc;mbito acad&ecirc;mico, no entanto,
-tamb&eacute;m possibilita sua utiliza&ccedil;&atilde;o como ferramenta de apoio no desenvolvimento de solu&ccedil;&otilde;es
-que utilizem como fonte a plataforma OTS.</p>
-      
-<p>Para futuras implementa&ccedil;&otilde;es, ser&aacute; considerada a inclus&atilde;o das seguintes
-funcionalidades:
- Melhoria na estrutura&ccedil;&atilde;o do banco de dados e estudo da viabilidade de uma
-poss&iacute;vel migra&ccedil;&atilde;o para a tecnologia NOSQL, que facilita aspectos relacionados
-&agrave; busca r&aacute;pida de dados e &eacute; comumente utilizada para a recupera&ccedil;&atilde;o de um
-grande fluxo de dados.
- Implementa&ccedil;&atilde;o de um dashboard com dados estat&iacute;sticos &agrave; respeito da
-quantidade de artigos publicados por curso, quais cursos precisam aumentar
-seu potencial cient&iacute;fico em rela&ccedil;&atilde;o aos demais, dentre outros aspectos que
-auxiliem os gestores de uma institui&ccedil;&atilde;o de ensino superior a impulsionarem a
-produ&ccedil;&atilde;o de material cient&iacute;fico.</p>
-      
-<p> Elaborar sistema de busca de artigos por t&iacute;tulo, palavras-chave e autores.</p>
-    
-</section>
-    
-<section>
-      
-<h3>5. Refer&ecirc;ncias</h3>
-      
-<p>ALMEIDA, M. B. Uma introdu&ccedil;&atilde;o ao XML, sua utiliza&ccedil;&atilde;o na Internet e alguns conceitos
-complementares. Ci. Inf., Bras&iacute;lia, v. 31, n. 2, p. 5-13, Aug. 2002. Dispon&iacute;vel em:
-&lt;http://www.scielo.br/scielo.php?script=sci_arttext&amp;pid=S010019652002000200001&amp;lng=en&amp;nrm=iso &gt;. Acesso em: 07 de Maio de 2018.
-http://dx.doi.org/10.1590/S0100-19652002000200001.</p>
-      
-<p>ANTONOV, A. Spring Boot Cookbook. Birmingham : Packt Publishing, 2018.</p>
-      
-<p>Centro Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 13
-institucional de artigos cient&iacute;ficos</p>
-      
-<p>FURNIVAL, A. C.; HUBBARD, B. Acesso Aberto &agrave;s Publica&ccedil;&otilde;es Cient&iacute;ficas: vantagens, pol&iacute;ticas e
-advocacy. InCID: Revista de Ci&ecirc;ncia da Informa&ccedil;&atilde;o e Documenta&ccedil;&atilde;o, v. 2, n. 2, p. 160-177, 12
-Dez. 2011.</p>
-      
-<p>GARNETT, A. et al. Introducing Texture: An Open Source WYSIWYG Javascript Editor for JATS.
-In: JOURNAL ARTICLE TAG SUITE CONFERENCE (JATS-Con), 2017, Bethesda. Proceedings
-[Internet]. Bethesda (MD): National Center for Biotechnology Information (US), 2017. Dispon&iacute;vel
-em: &lt;https://www.ncbi.nlm.nih.gov/books/NBK425544/&gt;.</p>
-      
-<p>GARNETT, A.; ALPERIN, J. P.; WILLINSKY, J. The Public Knowledge Project XML Publishing
-Service and meTypeset: Don't call it "Yet Another Word-to-JATS Conversion Kit". In: JOURNAL
-ARTICLE TAG SUITE CONFERENCE (JATS-Con), 2015, Bethesda. Proceedings [Internet].
-Bethesda (MD): National Center for Biotechnology Information (US), 2015. Dispon&iacute;vel em:
-&lt;https://www.ncbi.nlm.nih.gov/books/NBK279666/&gt;.</p>
-      
-<p>HRADIL, J.; SKLEN&Aacute;K, V. Practical Implementation of 10 Rules for Writing REST APIs. Journal
-of Systems Integration, v. 8, n. 1, p. 45-54, 2017.</p>
-    
-</section>
-  
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section>
+
+		<h3>1. Introdu&ccedil;&atilde;o</h3>
+
+		<p>A tarefa de disseminar conhecimento tem como auxiliares as
+			ferramentas e sistemas que possibilitam armazenar e disponibilizar
+			artefatos que descrevem trabalhos e pesquisas produzidas no meio
+			acad&ecirc;mico.</p>
+
+		<p>Muitas institui&ccedil;&otilde;es de ensino possuem suas
+			pr&oacute;prias bases de publica&ccedil;&otilde;es, denominadas como
+			Reposit&oacute;rios Institucionais (RIs), onde pesquisadores
+			s&atilde;o encorajados a depositarem seus preprints e postprints com
+			o intuito de aumentar a visibilidade dos resultados de suas pesquisas
+			(FURNIVAL &amp; HUBBARD, 2011).</p>
+
+	</section>
+
+	<section>
+
+		<h3>1.1. Justificativa</h3>
+
+		<p>Publicar os resultados alcan&ccedil;ados nos trabalhos de
+			conclus&atilde;o de curso apenas internamente, no &acirc;mbito da
+			Institui&ccedil;&atilde;o de Ensino Superior (IES) onde foram
+			realizados, pode n&atilde;o proporcionar a divulga&ccedil;&atilde;o e
+			alcance desejados aos projetos apresentados pelos alunos que se
+			encontram em processo de finaliza&ccedil;&atilde;o de um curso de
+			gradua&ccedil;&atilde;o. Portanto, a proposta de elaborar um portal
+			de publica&ccedil;&otilde;es de trabalhos surgiu da necessidade de
+			tornar o conte&uacute;do de tais projetos public&aacute;vel e de
+			facilitar e ampliar a sua divulga&ccedil;&atilde;o na rede mundial de
+			computadores, uma vez que se nota o crescimento da mobilidade e da
+			facilidade no acesso &agrave;s informa&ccedil;&otilde;es.</p>
+
+	</section>
+
+	<section>
+
+		<h3>1.2. Objetivos</h3>
+
+		<p>Diante da necessidade apresentada, objetiva-se neste trabalho
+			desenvolver uma aplica&ccedil;&atilde;o web para a
+			publica&ccedil;&atilde;o de trabalhos de conclus&atilde;o de curso,
+			desenvolvidos por alunos em ambiente acad&ecirc;mico. Prev&ecirc;-se
+			neste sistema que os alunos possam se cadastrar, submeter suas
+			publica&ccedil;&otilde;es para divulga&ccedil;&atilde;o na internet,
+			por meio de um portal espec&iacute;fico, e atrav&eacute;s do mesmo
+			efetuar consultas sobre as publica&ccedil;&otilde;es j&aacute;
+			dispon&iacute;veis.</p>
+
+		<p>Para viabilizar a constru&ccedil;&atilde;o do sistema web
+			apresentado, &eacute; proposto fazer uso de t&eacute;cnicas de
+			integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es, principalmente
+			para viabilizar a obten&ccedil;&atilde;o do arquivo correspondente
+			que ser&aacute; utilizado como base para a
+			transforma&ccedil;&atilde;o do documento originalmente publicado em
+			um formato compat&iacute;vel com as normas estabelecidas pelo
+			&oacute;rg&atilde;o regulamentador da internet (W3C - World Wide Web
+			Consortium), para que finalmente possa Centro Universit&aacute;rio
+			das Faculdades Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o
+			da Boa Vista &ndash; SP, Brasil. 2 ser publicado em uma p&aacute;gina
+			web onde o trabalho ficar&aacute; dispon&iacute;vel para
+			visualiza&ccedil;&atilde;o e download.</p>
+
+		<p>Com essa aplica&ccedil;&atilde;o, almeja-se colaborar para
+			tornar p&uacute;blico os trabalhos realizados por alunos de uma IES,
+			fazendo com que o conhecimento adquirido possa ser cada vez mais
+			difundido.</p>
+
+	</section>
+
+	<section>
+
+		<h3>1.3. Objetivos Espec&iacute;ficos</h3>
+
+		<p>Para que o desenvolvimento da aplica&ccedil;&atilde;o seja
+			realizado, objetiva-se tamb&eacute;m:  Analisar as ferramentas
+			necess&aacute;rias que poder&atilde;o ser &uacute;teis na
+			convers&atilde;o dos textos originais para o formato a ser empregado
+			na base de publica&ccedil;&otilde;es.  Implementar as
+			integra&ccedil;&otilde;es entre os softwares necess&aacute;rios.</p>
+
+	</section>
+
+	<section>
+
+		<h3>1.4. Problematiza&ccedil;&atilde;o</h3>
+
+		<p>Tomando como premissa o conceito de que um trabalho de
+			conclus&atilde;o de curso &eacute; rigorosamente analisado por
+			profissionais da &aacute;rea t&eacute;cnica e cient&iacute;fica por
+			diversas vezes antes de ser dado como finalizado, e que tamb&eacute;m
+			segue &agrave; risca os padr&otilde;es estabelecidos pela ABNT
+			(Associa&ccedil;&atilde;o Brasileira de Normas T&eacute;cnicas), ou
+			pela pr&oacute;pria institui&ccedil;&atilde;o de ensino, torna-se
+			vi&aacute;vel a ideia da constru&ccedil;&atilde;o de um software que
+			reconhe&ccedil;a padr&otilde;es estruturais de texto e trabalhe em
+			fun&ccedil;&atilde;o deles para derivar em uma sa&iacute;da com
+			conte&uacute;do manipul&aacute;vel, prop&iacute;cio para
+			publica&ccedil;&atilde;o em diversos formatos.</p>
+
+		<p>O cen&aacute;rio atual evidencia que a UNIFAE ainda n&atilde;o
+			disp&otilde;e de meios que proporcionem &agrave; comunidade em geral,
+			que deseja conhecer mais sobre o potencial cient&iacute;fico da
+			institui&ccedil;&atilde;o, um ambiente virtual de pesquisa que
+			armazene e tamb&eacute;m possibilite a consulta de trabalhos
+			executados por seus alunos. Logo, presume-se, que a
+			cria&ccedil;&atilde;o de um portal que se encarregue de executar tais
+			pap&eacute;is, poderia transformar a visibilidade externa da
+			faculdade e tamb&eacute;m dos trabalhos de seus graduandos.</p>
+
+		<p>Portanto o desenvolvimento de um software que fa&ccedil;a o
+			interm&eacute;dio entre o processo de reconhecimento, tratamento,
+			reestrutura&ccedil;&atilde;o de um documento cient&iacute;fico para
+			publica&ccedil;&atilde;o online, e a cria&ccedil;&atilde;o de um
+			portal que armazene este conte&uacute;do, vem de encontro com as
+			necessidades da universidade, que visa, atrav&eacute;s do
+			conhecimento transmitido na rela&ccedil;&atilde;o Centro
+			Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE,
+			S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 3
+			aluno-professor, formar profissionais cada vez mais aptos e dispostos
+			a buscar solu&ccedil;&otilde;es em favor das car&ecirc;ncias da
+			sociedade.</p>
+
+	</section>
+
+	<section>
+
+		<h3>2. Desenvolvimento</h3>
+
+	</section>
+
+	<section>
+
+		<h3>2.1. Referencial Te&oacute;rico</h3>
+
+	</section>
+
+	<section>
+
+		<h3>2.1.1. Integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es</h3>
+
+		<p>O conceito de integra&ccedil;&atilde;o de
+			aplica&ccedil;&otilde;es, definido por MARTINS (2005) como a
+			&ldquo;partilha de informa&ccedil;&otilde;es e dados entre
+			aplica&ccedil;&otilde;es em rede ou fontes de dados&rdquo;, corrobora
+			com a ideia de que com o aumento da quantidade de Sistemas Legados,
+			Web Services, e softwares em geral, que inevitavelmente com o passar
+			do tempo acabam por perder efici&ecirc;ncia ou tornam-se obsoletos,
+			muitas corpora&ccedil;&otilde;es tem adotado estrat&eacute;gias que
+			viabilizam a integra&ccedil;&atilde;o de novos sistemas, ao
+			inv&eacute;s da cria&ccedil;&atilde;o de novos softwares que abranjam
+			de forma geral o escopo de um projeto.</p>
+
+		<p>Tais estrat&eacute;gias s&atilde;o denominadas EAI (Enterprise
+			Application Integration), que consistem em um conjunto de boas
+			pr&aacute;ticas e padr&otilde;es que auxiliam desenvolvedores e
+			profissionais da &aacute;rea da tecnologia no processo de
+			integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es.</p>
+
+		<p>
+			De acordo com <i>RUH, MAGINNIS &amp; BROWN (2002</i> , p. 137) a
+			ado&ccedil;&atilde;o da abordagem EAI, torna-se mais vi&aacute;vel
+			para corpora&ccedil;&otilde;es pois a substitui&ccedil;&atilde;o
+			total de um sistema em funcionamento pode ser arriscada, tanto do
+			ponto de vista econ&ocirc;mico quanto do ponto de vista
+			t&eacute;cnico, visto que o processo de desenvolvimento exige grande
+			investimento, profissionais capacitados, al&eacute;m de tempo
+			at&eacute; sua finaliza&ccedil;&atilde;o.
+		</p>
+
+		<p>Diante disto, as corpora&ccedil;&otilde;es tem optado pelo
+			desenvolvimento de API&rsquo;s (Application Programming Interface),
+			que s&atilde;o respons&aacute;veis por implementar novas tecnologias
+			com o intuito de complementar os requisitos n&atilde;o contemplados
+			pela aplica&ccedil;&atilde;o anterior, al&eacute;m de proporcionar a
+			comunica&ccedil;&atilde;o entre sistemas distintos, independentes de
+			linguagem de programa&ccedil;&atilde;o ou arquitetura de software
+			utilizadas.</p>
+
+		<p>Dentre os diversos padr&otilde;es e t&eacute;cnicas de
+			integra&ccedil;&atilde;o de aplica&ccedil;&otilde;es presentes no
+			mercado, n&atilde;o &eacute; correto afirmar que existem
+			t&eacute;cnicas melhores, que se sobressaiam ante as demais. Todas
+			possuem suas vantagens e desvantagens, e cabe &agrave; equipe
+			respons&aacute;vel pela Centro Universit&aacute;rio das Faculdades
+			Associadas de Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista
+			&ndash; SP, Brasil. 4 integra&ccedil;&atilde;o escolher qual delas
+			&eacute; mais apropriada para a demanda (SORDI &amp; MARINHO, 2007).</p>
+
+		<p>De acordo com as abordagens discutidas por SORDI &amp; MARINHO
+			(2007), os recursos de integra&ccedil;&atilde;o de sistema s&atilde;o
+			divididos em tr&ecirc;s mecanismos: mensagem (messaging), chamadas
+			(call interface) e transfer&ecirc;ncia de arquivos (data access/file
+			transfer).</p>
+
+		<p>Para o desenvolvimento do presente trabalho, utilizou-se o
+			mecanismo de chamadas, aplicado por meio de um web service que
+			atrav&eacute;s da execu&ccedil;&atilde;o de requisi&ccedil;&otilde;es
+			HTTP, possibilitou o envio e recebimento de dados e arquivos, bem
+			como a comunica&ccedil;&atilde;o com a plataforma OTS.</p>
+
+	</section>
+
+	<section>
+
+		<h3>2.1.2. Protocolo HTTP e API&rsquo;s Restful</h3>
+
+		<p>HRADIL &amp; SKLEN&Aacute;K (2017) ressalta que grande parte
+			das aplica&ccedil;&otilde;es desenvolvidas atualmente utilizam a WEB
+			como meio de comunica&ccedil;&atilde;o com o usu&aacute;rio, uma vez
+			que a necessidade de acesso aos dados utilizando os mais variados
+			tipos de dispositivos tem se tornado cada vez maior.</p>
+
+		<p>Dentre as diversas formas de implenta&ccedil;&atilde;o de web
+			services, destaca-se o estilo arquitetural REST (Representational
+			State Transfer) no desenvolvimento desta aplica&ccedil;&atilde;o,
+			pois proporciona um conjunto padronizado de requisi&ccedil;&otilde;es
+			e respostas enviadas a um servidor, viabilizando assim, uma
+			comunica&ccedil;&atilde;o clara entre sistemas diferentes. A
+			arquitetura REST se baseia no uso do protocolo HTTP (Hypertext
+			Transfer Protocol), considerado como o protocolo b&aacute;sico de
+			transfer&ecirc;ncia de dados e arquivos de hiperm&iacute;dia.</p>
+
+		<p>O protocolo HTTP &eacute; dividido em m&eacute;todos, que
+			permitem a realiza&ccedil;&atilde;o de diferentes tipos de
+			a&ccedil;&otilde;es via requisi&ccedil;&atilde;o. S&atilde;o
+			utilizadas no desenvolvimento da aplica&ccedil;&atilde;o proposta os
+			seguintes m&eacute;todos e finalidades:  POST:
+			grava&ccedil;&atilde;o de dados;  GET: consulta de dados;  PUT:
+			altera&ccedil;&atilde;o de dados existentes;  DELETE:
+			remo&ccedil;&atilde;o de dados do servidor.</p>
+
+	</section>
+
+	<section>
+
+		<h3>2.1.3. Extra&ccedil;&atilde;o de informa&ccedil;&otilde;es de
+			arquivos estruturados</h3>
+
+		<p>Centro Universit&aacute;rio das Faculdades Associadas de
+			Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+			Brasil. 5</p>
+
+		<p>
+			A abordagem da extra&ccedil;&atilde;o de informa&ccedil;&atilde;o de
+			documentos de textos estruturados &eacute; um conceito bastante
+			abordado na &aacute;rea da Tecnologia da Informa&ccedil;&atilde;o.
+			Atrelado a este conceito, podemos observar que em grande parte dos
+			casos, faz-se necess&aacute;rio o reconhecimento e
+			extra&ccedil;&atilde;o de conte&uacute;do para a
+			obten&ccedil;&atilde;o de dados estruturados, que quando aplicados em
+			determinado cen&aacute;rio, passam a ter maior significado
+			sem&acirc;ntico para posterior manipula&ccedil;&atilde;o e
+			obten&ccedil;&atilde;o dos chamados metadados, que por sua vez,
+			resumem-se na ideia de &ldquo;dado sobre o dado&rdquo; ou na
+			&ldquo;cataloga&ccedil;&atilde;o do dado ou descri&ccedil;&atilde;o
+			do recurso eletr&ocirc;nico.&rdquo;, de acordo com <i>(SOUZA,
+				VENDRUSCULO &amp; MELO, 2000)</i> .
+		</p>
+
+		<p>
+			Ap&oacute;s serem extra&iacute;dos, tais metadados passam a ser
+			tratados como estruturas sujeitas a processamento computacional e
+			podem ser utilizados para a cria&ccedil;&atilde;o de conte&uacute;do
+			em diversos formatos, inclusive os voltados &agrave;
+			publica&ccedil;&atilde;o online. Os metadados, segundo <i>VANTI
+				(2010)</i> , tamb&eacute;m s&atilde;o utilizados para a
+			produ&ccedil;&atilde;o de dados estat&iacute;sticos voltados &agrave;
+			medi&ccedil;&atilde;o de &iacute;ndices de produtividade de centros
+			de pesquisa, identificando &aacute;reas e cursos que necessitam de
+			uma abordagem diferenciada, visando o aumento de seu potencial,
+			al&eacute;m de tamb&eacute;m serem utilizados como ferramenta
+			auxiliar de gest&atilde;o para a aloca&ccedil;&atilde;o de recursos
+			dentro de uma institui&ccedil;&atilde;o de ensino.
+		</p>
+
+		<p>Este processo de extra&ccedil;&atilde;o faz uso de diversos
+			softwares de automa&ccedil;&atilde;o, que partindo dos documentos de
+			entrada, resultam em arquivos de formatos espec&iacute;ficos, bem
+			estruturados e especificamente criados para facilitar o processo de
+			organiza&ccedil;&atilde;o e identifica&ccedil;&atilde;o do
+			conte&uacute;do. Dentre os principais formatos de arquivos com tais
+			caracter&iacute;sticas, destacam-se o Text Encoding Initiative (TEI)
+			e o Extensible Markup Language (XML).</p>
+
+		<p>
+			Os documentos TEI s&atilde;o definidos como uma estrutura de arquivo
+			de texto, utilizada para preservar o conte&uacute;do atrav&eacute;s
+			da cria&ccedil;&atilde;o de uma estrutura de
+			identifica&ccedil;&atilde;o, que viabiliza a leitura por meio de
+			softwares espec&iacute;ficos, voltados ao reconhecimento e
+			extra&ccedil;&atilde;o de textos. A codifica&ccedil;&atilde;o TEI de
+			um texto permite criar um documento com marca&ccedil;&otilde;es para
+			uso em programas especificamente desenvolvidos para a an&aacute;lise
+			textual, que reconhecem os objetos e seus significados atrav&eacute;s
+			das tags TEI. <i>(RANKIN, 2015 p. 5)</i> .
+		</p>
+
+		<p>Os documentos XML podem ser determinados como uma linguagem de
+			marca&ccedil;&atilde;o com a qual pode ser especificada a forma dos
+			dados no documento e defini&ccedil;&otilde;es sem&acirc;nticas.
+			&ldquo;Um arquivo eletr&ocirc;nico XML pode conter, simultaneamente,
+			dados e a descri&ccedil;&atilde;o da estrutura do documento,
+			atrav&eacute;s do DTD-Data Type Definitions (gram&aacute;ticas que
+			conferem estrutura ao documento XML).&rdquo; (ALMEIDA, 2002, p. 7).</p>
+
+		<p>Centro Universit&aacute;rio das Faculdades Associadas de
+			Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+			Brasil. 6</p>
+
+	</section>
+
+	<section>
+
+		<h3>2.1.4. Open Typesetting Stack (OTS)</h3>
+
+		<p>A API OTS &eacute; um servi&ccedil;o WEB open-source, mantido
+			pela iniciativa Public Knowledge Project (PKP)1, que visa efetuar a
+			convers&atilde;o de documentos para o formato XML-JATS, de maneira
+			mais intuitiva que outras ferramentas, com abordagem simples, e
+			entrega de uma interface gr&aacute;fica de f&aacute;cil usabilidade,
+			conforme Figura 1.</p>
+
+		<p>Figura 1. Demonstra&ccedil;&atilde;o da interface de
+			submiss&otilde;es &agrave; plataforma Open Typesetting Stack.</p>
+
+		<p>Fonte: Open Typesetting Stack2.</p>
+
+		<p>Segundo GARNETT et al. (2017), esta ferramenta utiliza diversas
+			bibliotecas de acesso aberto (como por exemplo, o software meTypeset)
+			para a realiza&ccedil;&atilde;o do processo de convers&atilde;o de um
+			documento. No processamento realizado pelo software meTypeset, de
+			acordo com GARNETT, ALPERIN &amp; WILLINSKY (2015), s&atilde;o
+			empregadas grandes 1 Iniciativa Open Source desenvolvedora de
+			solu&ccedil;&otilde;es para aux&iacute;lio &agrave; profissionais no
+			ramo de publica&ccedil;&otilde;es cient&iacute;ficas.
+			Dispon&iacute;vel em: https://pkp.sfu.ca/.</p>
+
+		<section>
+
+			<h4>2 http://pkp-xml-demo.lib.sfu.ca/</h4>
+
+			<p>Centro Universit&aacute;rio das Faculdades Associadas de
+				Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+				Brasil. 7 quantidades de estruturas de dados que utilizam
+				princ&iacute;pios de heur&iacute;stica e aplica&ccedil;&atilde;o de
+				parseamento baseado em l&oacute;gica fuzzy, partindo de um documento
+				DOCX, passando pela transforma&ccedil;&atilde;o para o formato TEI e
+				posterior obten&ccedil;&atilde;o de um arquivo XML-JATS.</p>
+
+			<p>Na Figura 2 &eacute; demonstrado o fluxo de processamento da
+				ferramenta meTypeSet, na qual pode ser observado que a entrada pode
+				ser constitu&iacute;da de documentos contendo textos fornecidos a
+				partir de diferentes ferramentas como Microsoft Office Word, ou
+				LibreOffice. A partir dela, conforme mencionado, pode ser obtido um
+				arquivo equivalente no formato XML.</p>
+
+			<section>
+
+				<h5>Figura 2. Fluxo de processamento da ferramenta meTypeset.</h5>
+
+				<p>Fonte: Eve (2015).</p>
+
+				<p>A API OTS foi escolhida neste trabalho, pois seu
+					&iacute;ndice de assertividade e compatibilidade dos documentos de
+					sa&iacute;da chega a uma m&eacute;dia de 80% em
+					rela&ccedil;&atilde;o a padr&otilde;es exigidos pela
+					especifica&ccedil;&atilde;o XML-JATS.</p>
+
+			</section>
+
+		</section>
+
+	</section>
+
+	<section>
+
+		<h3>2.2. Materiais e M&eacute;todos 2.2.1. Front-end</h3>
+
+		<p>O software proposto foi constru&iacute;do segundo a arquitetura
+			Cliente-Servidor e para a apresenta&ccedil;&atilde;o dos recursos
+			utilizados durante o desenvolvimento, podemos agrup&aacute;-los em
+			categorias, para melhor entendimento:</p>
+
+		<p>Centro Universit&aacute;rio das Faculdades Associadas de
+			Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+			Brasil. 8</p>
+
+		<p>
+			O front-end &eacute; parte relacionada &agrave;
+			exibi&ccedil;&atilde;o do software em uma interface web, e para o
+			desenvolvimento desta etapa foram utilizados conceitos b&aacute;sicos
+			da &aacute;rea de desenvolvimento web como HTML (HyperText Markup
+			Language) e CSS (Cascading Style Sheets) e Javascript somados
+			&agrave; utiliza&ccedil;&atilde;o do framework Angular em sua
+			vers&atilde;o 6.1.7. A escolha do framework Angular deu-se devido sua
+			popularidade, performance e especialmente &agrave; sua grande
+			comunidade de desenvolvedores ao redor do mundo que destinam parte do
+			seu tempo na cria&ccedil;&atilde;o de solu&ccedil;&otilde;es e
+			plugins que facilitam a vida dos desenvolvedores que a utilizam. Tais
+			fatores fazem do Angular um dos melhores frameworks Javascript da
+			atualidade <i>SESHADRI, S. (2018</i> ).
+		</p>
+
+		<p>2.2.2. Back-end</p>
+
+		<p>Nesta categoria, do lado servidor, foi utilizada a plataforma
+			OTS para convers&atilde;o dos documentos WORD em XML, HTML ou PDF.
+			Para isso, foi necess&aacute;ria a implementa&ccedil;&atilde;o de web
+			services que permitissem a integra&ccedil;&atilde;o desta plataforma
+			com o software em desenvolvimento. Para a implementa&ccedil;&atilde;o
+			dos web services, foi escolhida a arquitetura REST. Para a
+			constru&ccedil;&atilde;o desta integra&ccedil;&atilde;o e das regras
+			de neg&oacute;cio presentes no back-end foi utilizada a linguagem
+			JAVA vers&atilde;o 8 em conjunto com o framework Spring Boot em sua
+			vers&atilde;o 2.0.4, devido sua facilidade em acelerar o processo de
+			configura&ccedil;&atilde;o de uma aplica&ccedil;&atilde;o Spring
+			(ANTONOV, 2018).</p>
+
+	</section>
+
+	<section>
+
+		<h3>2.2.3. Ferramentas estruturais e de apoio</h3>
+
+		<p>Nesta categoria, ser&atilde;o listadas as ferramentas que
+			tornaram mais f&aacute;ceis a intera&ccedil;&atilde;o e o
+			gerenciamento do projeto:  Controle de vers&otilde;es: utilizou-se
+			GIT somado &agrave; plataforma de hospedagem de c&oacute;digos-fonte
+			Bitbucket3.  Organiza&ccedil;&atilde;o de tarefas do projeto:
+			utilizou-se o Trello4, que aliado &agrave; metodologia &aacute;gil
+			Kanban, pode proporcionar uma excelente vis&atilde;o das tarefas a
+			serem executadas.</p>
+
+		<section>
+
+			<h4>3 https://bitbucket.org</h4>
+
+		</section>
+
+		<section>
+
+			<h4>4 https://trello.com/</h4>
+
+			<p>Centro Universit&aacute;rio das Faculdades Associadas de
+				Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+				Brasil. 9  </p>
+
+			<p>Armazenamento de dados: utilizou-se o SGBD Oracle Database
+				Express Edition 11g Release 2, que proporciona ao desenvolvedor de
+				forma gratuita facilidade na administra&ccedil;&atilde;o,
+				manuten&ccedil;&atilde;o5.</p>
+
+			<p>Armazenamento dos documentos: utilizou-se o sistema de
+				arquivos do ambiente em que o sistema est&aacute; hospedado. A
+				estrat&eacute;gia utilizada visa a economia no armazenamento de
+				dados, visto que a vers&atilde;o de SGBD &eacute; uma vers&atilde;o
+				gratuita e possui um limite de armazenamento, portanto, foram
+				utilizados campos VARCHAR(2) destinados ao armazenamento de
+				refer&ecirc;ncias ao diret&oacute;rio em que o arquivo foi
+				armazenado.</p>
+
+		</section>
+
+	</section>
+
+	<section>
+
+		<h3>3. Resultados e Discuss&otilde;es</h3>
+
+		<p>Como resultado deste trabalho, foi constru&iacute;do um
+			software que atende aos seguintes requisitos funcionais:  Cadastro
+			de alunos;  Cadastro de cursos e turmas;  Cadastro de
+			submiss&otilde;es de documentos referentes a artigos ou trabalhos
+			acad&ecirc;micos;  Listagem de submiss&otilde;es de documentos por
+			curso e turma;  Listagem individual de um documento submetido, em
+			uma p&aacute;gina HTML, contendo as informa&ccedil;&otilde;es
+			b&aacute;sicas de um artigo (t&iacute;tulo, autores, resumo e
+			palavras-chave), bem como links para download do documento na
+			vers&atilde;o PDF.</p>
+
+		<p>A principal integra&ccedil;&atilde;o implementada neste sistema
+			foi realizada com o desenvolvimento de um web service para permitir
+			que o usu&aacute;rio realize a submiss&atilde;o de documentos
+			cient&iacute;ficos estruturados no formato Word e que o software web
+			obtenha como retorno, desta requisi&ccedil;&atilde;o, arquivos nos
+			formatos HTML, XML e PDF que s&atilde;o produzidos pela plataforma
+			OTS. Tais documentos s&atilde;o posteriormente disponibilizados
+			online pelo software web, conforme ilustrado na Figura 3. Centro
+			Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE,
+			S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 10</p>
+
+		<section>
+
+			<h4>Figura 3. Diagrama de fluxo de arquivos no processo de
+				submiss&atilde;o.</h4>
+
+			<p>O processo de submiss&atilde;o d&aacute;-se da seguinte forma:
+				i. O usu&aacute;rio submete o arquivo Word ao sistema. ii. A
+				submiss&atilde;o &eacute; armazenada em uma fila tempor&aacute;ria
+				no sistema, que ao fim do dia atrav&eacute;s de um scheduler de
+				tarefas, comp&otilde;e o lote a ser enviado a plataforma OTS. Os
+				arquivos s&atilde;o enviados um a um via requisi&ccedil;&atilde;o
+				HTTP (m&eacute;todo POST) &agrave; plataforma OTS, que se encarrega
+				de converter o documento para outros formatos. iii. Devido a uma
+				conven&ccedil;&atilde;o adotada no desenvolvimento deste projeto,
+				tr&ecirc;s horas ap&oacute;s a submiss&atilde;o, o sistema faz
+				requisi&ccedil;&otilde;es &agrave; plataforma (tamb&eacute;m
+				atrav&eacute;s da utiliza&ccedil;&atilde;o de um scheduler de
+				tarefas), para verificar o status do processo de convers&atilde;o.
+				Tais status est&atilde;o dispon&iacute;veis para consulta na
+				documenta&ccedil;&atilde;o do OTS no Github6. iv. Caso os documentos
+				j&aacute; tenham sido processados, o sistema solicita via
+				requisi&ccedil;&atilde;o HTTP o retorno dos arquivos da plataforma,
+				que os envia como resposta.</p>
+
+			<section>
+
+				<h5>6 https://github.com/pkp/ots</h5>
+
+				<p>Centro Universit&aacute;rio das Faculdades Associadas de
+					Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+					Brasil. 11 v. Os arquivos vindos do OTS s&atilde;o armazenados no
+					sistema de arquivos e Sistema de Gerenciamento de Banco de Dados
+					(SGBD).</p>
+
+				<p>Para a execu&ccedil;&atilde;o do processo de envio dos
+					arquivos via requisi&ccedil;&atilde;o HTTP, utilizou-se a
+					impementa&ccedil;&atilde;o de uma fila de submiss&otilde;es, onde
+					os arquivos submetidos durante o dia s&atilde;o enfileirados, e
+					devido a uma conven&ccedil;&atilde;o adotada na
+					implementa&ccedil;&atilde;o do projeto, definiu-se que seus itens
+					seriam enviados em uma requisi&ccedil;&atilde;o HTTP POST em
+					determinado hor&aacute;rio, e que ap&oacute;s tr&ecirc;s horas o
+					sistema faria outra requisi&ccedil;&atilde;o HTTP, para obter os
+					arquivos anteriormente enviados (GET). Tal
+					implementa&ccedil;&atilde;o tornou-se poss&iacute;vel
+					atrav&eacute;s da utiliza&ccedil;&atilde;o de um campo do tipo
+					boolean pr&eacute; definido na esturutra da tabela de
+					submiss&otilde;es, que assumiu o papel de flag, possibilitando a
+					indica&ccedil;&atilde;o se o arquivo havia ou n&atilde;o sido
+					enviado &agrave; plataforma.</p>
+
+				<p>As requisi&ccedil;&otilde;es HTTP GET utilizaram como
+					par&acirc;metro de identifica&ccedil;&atilde;o o campo OTS_ID
+					presente na tabela de submiss&otilde;es. Este campo corresponde ao
+					identificador recebido por cada publica&ccedil;&atilde;o no momento
+					em que a requisi&ccedil;&atilde;o &eacute; recebida pela plataforma
+					OTS.</p>
+
+				<p>Ao t&eacute;rmino do desenvolvimento deste trabalho, foi
+					poss&iacute;vel obter a integra&ccedil;&atilde;o de um novo
+					software com a plataforma OTS, inicialmente vislumbrada para
+					desempenhar a importante fun&ccedil;&atilde;o de facilitar a
+					divulga&ccedil;&atilde;o das pesquisas realizadas na
+					institui&ccedil;&atilde;o, e a obten&ccedil;&atilde;o dos seguintes
+					resultados:  Realiza&ccedil;&atilde;o de
+					requisi&ccedil;&otilde;es HTTP com o m&eacute;todo POST &agrave;
+					plataforma OTS, permitindo com que o usu&aacute;rio submeta
+					arquivos no formato Word e PDF.  Realiza&ccedil;&atilde;o de
+					requisi&ccedil;&otilde;es HTTP com o m&eacute;todo GET &agrave;
+					plataforma OTS, viabilizando a consulta ao status de processamento
+					dos arquivos submetidos e tamb&eacute;m a obten&ccedil;&atilde;o
+					dos arquivos processados.  Implementa&ccedil;&atilde;o de uma
+					interface voltada ao reposit&oacute;rio de artigos de uma
+					institui&ccedil;&atilde;o, que permite o cadastro de alunos,
+					cursos, turmas e submiss&otilde;es de artigos, e possibilita ao
+					p&uacute;blico o acesso ao conte&uacute;do cient&iacute;fico
+					submetido.</p>
+
+				<p>Diante dos resultados obtidos, constatou-se que a plataforma
+					OTS cumpre a proposta definida por seus criadores no que tange ao
+					cen&aacute;rio de transforma&ccedil;&atilde;o de um arquivo Word ou
+					PDF em formatos diversos. Entretanto, &eacute; importante ressaltar
+					que a qualidade obtida nos documentos de sa&iacute;da, vindos da
+					plataforma, depende diretamente do arquivo fonte, e da forma pelo
+					qual &eacute; estruturado e, embora tenha uma assertividade de 80%,
+					algumas vezes o OTS produz resultados que n&atilde;o s&atilde;o
+					suficientemente satisfat&oacute;rios e que precisam de uma
+					solu&ccedil;&atilde;o supervisonada ao t&eacute;rmino de seu
+					trabalho, conforme mencionado em GARNETT et al. (2017) Centro
+					Universit&aacute;rio das Faculdades Associadas de Ensino, UNIFAE,
+					S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP, Brasil. 12</p>
+
+			</section>
+
+		</section>
+
+	</section>
+
+	<section>
+
+		<h3>4. Considera&ccedil;&otilde;es Finais</h3>
+
+		<p>O desenvolvimento do presente estudo possibilitou a
+			cria&ccedil;&atilde;o de uma aplica&ccedil;&atilde;o voltada &agrave;
+			preserva&ccedil;&atilde;o de artigos cient&iacute;ficos desenvolvidos
+			por uma institui&ccedil;&atilde;o de ensino, atrav&eacute;s da
+			utiliza&ccedil;&atilde;o de princ&iacute;pios de
+			integra&ccedil;&atilde;o de software, proporcionando &agrave;
+			comunidade cient&iacute;fica e ao p&uacute;blico em geral, acesso ao
+			conte&uacute;do produzido por alunos de gradua&ccedil;&atilde;o, com
+			o intuito da difus&atilde;o do conte&uacute;do cient&iacute;fico e
+			aumento da visibilidade da institui&ccedil;&atilde;o frente &agrave;
+			sociedade.</p>
+
+		<p>O presente trabalho possui sua aplica&ccedil;&atilde;o voltada
+			ao &acirc;mbito acad&ecirc;mico, no entanto, tamb&eacute;m
+			possibilita sua utiliza&ccedil;&atilde;o como ferramenta de apoio no
+			desenvolvimento de solu&ccedil;&otilde;es que utilizem como fonte a
+			plataforma OTS.</p>
+
+		<p>Para futuras implementa&ccedil;&otilde;es, ser&aacute;
+			considerada a inclus&atilde;o das seguintes funcionalidades: 
+			Melhoria na estrutura&ccedil;&atilde;o do banco de dados e estudo da
+			viabilidade de uma poss&iacute;vel migra&ccedil;&atilde;o para a
+			tecnologia NOSQL, que facilita aspectos relacionados &agrave; busca
+			r&aacute;pida de dados e &eacute; comumente utilizada para a
+			recupera&ccedil;&atilde;o de um grande fluxo de dados. 
+			Implementa&ccedil;&atilde;o de um dashboard com dados
+			estat&iacute;sticos &agrave; respeito da quantidade de artigos
+			publicados por curso, quais cursos precisam aumentar seu potencial
+			cient&iacute;fico em rela&ccedil;&atilde;o aos demais, dentre outros
+			aspectos que auxiliem os gestores de uma institui&ccedil;&atilde;o de
+			ensino superior a impulsionarem a produ&ccedil;&atilde;o de material
+			cient&iacute;fico.</p>
+
+		<p> Elaborar sistema de busca de artigos por t&iacute;tulo,
+			palavras-chave e autores.</p>
+
+	</section>
+
+	<section>
+
+		<h3>5. Refer&ecirc;ncias</h3>
+
+		<p>ALMEIDA, M. B. Uma introdu&ccedil;&atilde;o ao XML, sua
+			utiliza&ccedil;&atilde;o na Internet e alguns conceitos
+			complementares. Ci. Inf., Bras&iacute;lia, v. 31, n. 2, p. 5-13, Aug.
+			2002. Dispon&iacute;vel em:
+			&lt;http://www.scielo.br/scielo.php?script=sci_arttext&amp;pid=S010019652002000200001&amp;lng=en&amp;nrm=iso
+			&gt;. Acesso em: 07 de Maio de 2018.
+			http://dx.doi.org/10.1590/S0100-19652002000200001.</p>
+
+		<p>ANTONOV, A. Spring Boot Cookbook. Birmingham : Packt
+			Publishing, 2018.</p>
+
+		<p>Centro Universit&aacute;rio das Faculdades Associadas de
+			Ensino, UNIFAE, S&atilde;o Jo&atilde;o da Boa Vista &ndash; SP,
+			Brasil. 13 institucional de artigos cient&iacute;ficos</p>
+
+		<p>FURNIVAL, A. C.; HUBBARD, B. Acesso Aberto &agrave;s
+			Publica&ccedil;&otilde;es Cient&iacute;ficas: vantagens,
+			pol&iacute;ticas e advocacy. InCID: Revista de Ci&ecirc;ncia da
+			Informa&ccedil;&atilde;o e Documenta&ccedil;&atilde;o, v. 2, n. 2, p.
+			160-177, 12 Dez. 2011.</p>
+
+		<p>GARNETT, A. et al. Introducing Texture: An Open Source WYSIWYG
+			Javascript Editor for JATS. In: JOURNAL ARTICLE TAG SUITE CONFERENCE
+			(JATS-Con), 2017, Bethesda. Proceedings [Internet]. Bethesda (MD):
+			National Center for Biotechnology Information (US), 2017.
+			Dispon&iacute;vel em:
+			&lt;https://www.ncbi.nlm.nih.gov/books/NBK425544/&gt;.</p>
+
+		<p>GARNETT, A.; ALPERIN, J. P.; WILLINSKY, J. The Public Knowledge
+			Project XML Publishing Service and meTypeset: Don't call it "Yet
+			Another Word-to-JATS Conversion Kit". In: JOURNAL ARTICLE TAG SUITE
+			CONFERENCE (JATS-Con), 2015, Bethesda. Proceedings [Internet].
+			Bethesda (MD): National Center for Biotechnology Information (US),
+			2015. Dispon&iacute;vel em:
+			&lt;https://www.ncbi.nlm.nih.gov/books/NBK279666/&gt;.</p>
+
+		<p>HRADIL, J.; SKLEN&Aacute;K, V. Practical Implementation of 10
+			Rules for Writing REST APIs. Journal of Systems Integration, v. 8, n.
+			1, p. 45-54, 2017.</p>
+
+	</section>
+
 </div>
-  
+

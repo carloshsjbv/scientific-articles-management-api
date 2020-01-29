@@ -2,30 +2,30 @@ package br.com.carlos.projeto.conclusao.curso.model.integrationmodel;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  *
  * @author Carlos H
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CitationStyles {
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+public class CitationStyles
+{
 
-    private String code;
+	private String code;
 
-    public CitationStyles(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @Override
-    public String toString() {
-        return "CitationStyles{" + "code=" + code + '}';
-    }
+	public String toString()
+	{
+		return "CitationStyles{" + "code=" + code + '}';
+	}
 
 }
