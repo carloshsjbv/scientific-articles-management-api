@@ -1,7 +1,7 @@
 package br.com.carlos.projeto.conclusao.curso.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.net.URI;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.carlos.projeto.conclusao.curso.model.SubmissionModel;
 import br.com.carlos.projeto.conclusao.curso.model.dtos.SubmissionDTO;
@@ -27,7 +28,7 @@ import br.com.carlos.projeto.conclusao.curso.service.SubmissionService;
  * @author Carlos H
  */
 @RestController
-@RequestMapping(path = "/submissoes")
+@RequestMapping(path = "/submissions")
 public class SubmissionController
 {
 
@@ -61,32 +62,42 @@ public class SubmissionController
 
 	}
 
-	@GetMapping(value = "list/{acronimo}")
-	public List<SubmissionModel> findByStudentClassAndCourse(@PathVariable("acronimo") String acronimo)
+	@GetMapping(value = "/list/{acronym}")
+	public ResponseEntity<List<SubmissionModel>> findByStudentClassAndCourse(@PathVariable("acronym") String acronym)
 	{
-		List<SubmissionModel> submissoes = (List<SubmissionModel>) submissionService.findAllByCourse(acronimo);
-		return submissoes.isEmpty() ? null : submissoes;
+		List<SubmissionModel> submissions = submissionService.findAllByCourse(acronym);
+
+		if (submissions != null && !submissions.isEmpty())
+		{
+			return ResponseEntity.ok(submissions);
+		}
+
+		return ResponseEntity.notFound().build();
 	}
 
-	@GetMapping(value = "list/{acronimo}/{anoInicial}")
-	public List<SubmissionModel> listarSubmissoesPorAlunoTurmaAnoInicial(@PathVariable("acronimo") String acronimo,
-			@PathVariable("anoInicial") int anoInicial)
+	@GetMapping(value = "/list/{acronym}/{initialYear}")
+	public ResponseEntity<List<SubmissionModel>> listarSubmissoesPorAlunoTurmaAnoInicial(
+			@PathVariable("acronym") String acronym, @PathVariable("initialYear") int initialYear)
 	{
-		List<SubmissionModel> submissoes = (List<SubmissionModel>) submissionService.findAllByTurmaAnoCurso(anoInicial);
-		return submissoes.isEmpty() ? null : submissoes;
+		List<SubmissionModel> submissions = submissionService.findAllByTurmaAnoCurso(initialYear);
+
+		if (submissions != null && !submissions.isEmpty())
+		{
+			return ResponseEntity.ok(submissions);
+		}
+
+		return ResponseEntity.notFound().build();
 	}
 
 	@PostMapping(headers = "content-type=multipart/form-data", consumes =
 	{ MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<?> save(@ModelAttribute @Valid SubmissionDTO submissao) throws Exception
+	public ResponseEntity<SubmissionModel> save(@ModelAttribute @Valid SubmissionDTO submission,
+			UriComponentsBuilder uriBuilder) throws Exception
 	{
-		try
-		{
-			submissionService.save(submissao);
-			return (ResponseEntity<?>) ResponseEntity.ok(submissao);
-		} catch (IOException | SQLException e)
-		{
-			throw new Exception(e);
-		}
+		SubmissionModel savedSubmission = submissionService.save(submission);
+
+		URI uri = uriBuilder.path("/submission/{id}").buildAndExpand(savedSubmission.getId()).toUri();
+		return ResponseEntity.created(uri).body(savedSubmission);
+
 	}
 }

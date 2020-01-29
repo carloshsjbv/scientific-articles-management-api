@@ -1,17 +1,13 @@
 package br.com.carlos.projeto.conclusao.curso.controller;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentClassModel;
-import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
-import br.com.carlos.projeto.conclusao.curso.model.dtos.CourseDTO;
-import br.com.carlos.projeto.conclusao.curso.service.CourseService;
-import br.com.carlos.projeto.conclusao.curso.service.StudentClassService;
-
 import java.net.URI;
 import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
+import br.com.carlos.projeto.conclusao.curso.model.StudentClassModel;
+import br.com.carlos.projeto.conclusao.curso.model.dtos.CourseDTO;
+import br.com.carlos.projeto.conclusao.curso.service.CourseService;
+import br.com.carlos.projeto.conclusao.curso.service.StudentClassService;
+
 /**
- * Controlador Cursos
+ * Course controller
  *
  * @author Carlos H
  */
 @RestController
-@RequestMapping(path = "/cursos")
+@RequestMapping(path = "/courses")
 public class CourseController
 {
 
@@ -46,19 +48,20 @@ public class CourseController
 	}
 
 	@GetMapping(value = "/{id}")
-	public CourseModel listarCursosPorId(@PathVariable("id") Long id) throws EntityNotFoundException
+	public ResponseEntity<CourseModel> findById(@PathVariable("id") Long id) throws EntityNotFoundException
 	{
-		try
+		CourseModel courseModel = courseService.findById(id);
+
+		if (courseModel != null)
 		{
-			return courseService.findById(id);
-		} catch (EntityNotFoundException e)
-		{
-			throw new EntityNotFoundException(e.getMessage() + id.toString());
+			return ResponseEntity.ok(courseModel);
 		}
+
+		return ResponseEntity.notFound().build();
 	}
 
 	@GetMapping(value = "/studentclass/{acronym}")
-	public List<StudentClassModel> findStudentClassByCourse(@PathVariable("acronimo") String acronym) throws Exception
+	public List<StudentClassModel> findStudentClassByCourse(@PathVariable("acronym") String acronym) throws Exception
 	{
 
 		try
@@ -80,7 +83,7 @@ public class CourseController
 	}
 
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody @Valid CourseDTO course, UriComponentsBuilder uriBuilder)
+	public ResponseEntity<CourseModel> save(@RequestBody @Valid CourseDTO course, UriComponentsBuilder uriBuilder)
 	{
 
 		CourseModel savedCourse = courseService.save(course);
@@ -91,15 +94,33 @@ public class CourseController
 	}
 
 	@PutMapping
-	public ResponseEntity<?> alteraCurso(@RequestBody @Valid CourseDTO curso)
+	@Transactional
+	public ResponseEntity<CourseModel> alteraCurso(@RequestBody @Valid CourseDTO course)
 	{
-		return new ResponseEntity<>(courseService.alteraCurso(curso), HttpStatus.CREATED);
+		CourseModel updatedCourse = courseService.alteraCurso(course);
+
+		if (updatedCourse != null)
+		{
+			return ResponseEntity.ok(updatedCourse);
+		}
+
+		return ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")
-	public void removeCurso(@PathVariable Long id)
+	@Transactional
+	public ResponseEntity<?> removeCurso(@PathVariable Long id)
 	{
-		courseService.removeCurso(id);
+		CourseModel courseModel = courseService.findById(id);
+
+		if (courseModel != null)
+		{
+			courseService.removeCurso(id);
+			return ResponseEntity.ok().build();
+		}
+
+		return ResponseEntity.notFound().build();
+
 	}
 
 }

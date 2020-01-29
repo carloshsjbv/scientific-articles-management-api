@@ -52,13 +52,21 @@ public class StudentClassController
 	}
 
 	@GetMapping(value = "curso/{cursoId}")
-	public List<StudentClassModel> findStudentClassByCourseId(@PathVariable("courseId") Long cursoId)
+	public ResponseEntity<List<StudentClassModel>> findStudentClassByCourseId(@PathVariable("courseId") Long cursoId)
 	{
-		return studentClassService.findByCourseId(cursoId);
+		List<StudentClassModel> studentClass = studentClassService.findByCourseId(cursoId);
+
+		if (studentClass != null && !studentClass.isEmpty())
+		{
+			return ResponseEntity.ok(studentClass);
+		}
+
+		return ResponseEntity.notFound().build();
 	}
 
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody @Valid ClassDTO studentClassForm, UriComponentsBuilder uriBuilder)
+	public ResponseEntity<StudentClassModel> save(@RequestBody @Valid ClassDTO studentClassForm,
+			UriComponentsBuilder uriBuilder)
 	{
 		CourseModel course = courseService.findById(studentClassForm.getCourse());
 
