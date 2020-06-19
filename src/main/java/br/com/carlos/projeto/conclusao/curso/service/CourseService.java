@@ -1,6 +1,6 @@
 package br.com.carlos.projeto.conclusao.curso.service;
 
-import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.CourseModel;
 import br.com.carlos.projeto.conclusao.curso.model.dtos.CourseDTO;
 import br.com.carlos.projeto.conclusao.curso.repository.CourseRepository;
 import java.util.List;

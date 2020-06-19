@@ -1,4 +1,4 @@
-package br.com.carlos.projeto.conclusao.curso.model;
+package br.com.carlos.projeto.conclusao.curso.model.common;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -57,7 +57,7 @@ public abstract class UserModel implements UserDetails, Serializable
 
 	@ManyToMany
 	@JoinTable(name = "USUARIO_ROLES", joinColumns = @JoinColumn(name = "USUARIOID", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ROLEID", referencedColumnName = "ROLEID"))
-	private Collection<Role> authority;
+	private Collection<RoleModel> authority;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities()

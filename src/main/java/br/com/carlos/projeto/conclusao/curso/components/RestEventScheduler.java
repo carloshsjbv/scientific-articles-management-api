@@ -6,15 +6,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.xml.transform.TransformerException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,7 +24,6 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -33,13 +31,14 @@ import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.carlos.projeto.conclusao.curso.ProjetoConclusaoCursoApplication;
-import br.com.carlos.projeto.conclusao.curso.model.StudentModel;
-import br.com.carlos.projeto.conclusao.curso.model.SubmissionModel;
-import br.com.carlos.projeto.conclusao.curso.model.SubmissionsQueue;
-import br.com.carlos.projeto.conclusao.curso.model.integrationmodel.JsonGETStatusResponse;
-import br.com.carlos.projeto.conclusao.curso.model.integrationmodel.JsonPOSTResponse;
-import br.com.carlos.projeto.conclusao.curso.repository.SubmissionsQueueRepository;
+import br.com.carlos.projeto.conclusao.curso.components.request.RequestHandler;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.SubmissionModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.SubmissionsQueue;
+import br.com.carlos.projeto.conclusao.curso.model.integration.JsonGETStatusResponse;
+import br.com.carlos.projeto.conclusao.curso.model.integration.JsonPOSTResponse;
 import br.com.carlos.projeto.conclusao.curso.repository.SubmissionRepository;
+import br.com.carlos.projeto.conclusao.curso.repository.SubmissionsQueueRepository;
 
 /**
  * Component responsible for sending an HTTP request to OTS api in a scheduled
@@ -52,62 +51,69 @@ import br.com.carlos.projeto.conclusao.curso.repository.SubmissionRepository;
 public class RestEventScheduler
 {
 
-	@Autowired
-	private SubmissionsQueueRepository filaSubmissoesRepository;
+	private static final Logger LOG = LoggerFactory.getLogger(ProjetoConclusaoCursoApplication.class);
 
 	@Autowired
-	private SubmissionRepository submissaoRepository;
+	private SubmissionsQueueRepository submissionQueueRepository;
+
+	@Autowired
+	private SubmissionRepository submissionRepository;
 
 	@Autowired
 	private XMLConversor conversor;
 
 	@Autowired
-	private FileManager manipuladorDeArquivos;
+	private FileManager fileManager;
 
-	private static final String TIME_ZONE = "America/Sao_Paulo";
+	private final String timeZone = "America/Sao_Paulo";
 
-	private static final String EMAIL = "carloshsjbv@gmail.com";
+	@Value("${application.ots.account.email}")
+	private String email;
+	
+	@Value("${appliction.ots.api.url}")
+	private String otsUrl;
 
-	private static final String OTS_URL = "http://pkp-xml-demo.lib.sfu.ca/api/job/";
+	@Value("${application.ots.api.auth.token}")
+	private String otsAuthToken = "9f392da47a631ac2fe5ec2440e2ba4c36bca1d38";
 
-	private static final String OTS_AUTH_TOKEN = "9f392da47a631ac2fe5ec2440e2ba4c36bca1d38";
+	@Value("${application.files.metadata.filepath}")
+	private String metadataFilePath;
 
-	private static final String CONTEXT_PATH = System.getProperty("user.dir");
-
-	private static final Logger LOG = LoggerFactory.getLogger(ProjetoConclusaoCursoApplication.class);
 
 	/**
 	 * Scheduler method
 	 *
 	 * @throws java.lang.Exception
-	 * @throws br.com.carlos.projeto.conclusao.curso.exceptions.TratadorRequisicoesRest
+	 * @throws br.com.carlos.projeto.conclusao.curso.exceptions.RestRequestHandler
+	 * 
 	 */
-	@Scheduled(cron = "0 0 1 * * *", zone = TIME_ZONE)
-	public void enviaArtigo() throws Exception
+	@Scheduled(cron = "0 0 1 * * *", zone = timeZone)
+	public void sendArtile() throws Exception
 	{
 
-		String postURL = OTS_URL + "submit";
+		String postURL = otsUrl + "submit";
 
 		RestTemplate restTemplateToPost = new RestTemplate();
 
+		HashMap<String, String> params = buildRequestParams();
+		
 		try
 		{
-			Iterable<SubmissionsQueue> fila = filaSubmissoesRepository.findAllBySent(false);
+			Iterable<SubmissionsQueue> queue = submissionQueueRepository.findAllBySent(false);
 
-			for (SubmissionsQueue itemFila : fila)
+			for (SubmissionsQueue queueItem : queue)
 			{
 
-				SubmissionModel submissaoParaEnviar = itemFila.getSubmissionModel();
+				SubmissionModel submissionToSend = queueItem.getSubmissionModel();
 
-				if (submissaoParaEnviar != null)
+				if (submissionToSend != null)
 				{
 
 					System.out.println("Begining /POST request!");
 
-					HttpEntity<MultiValueMap<String, Object>> requestEntity = buildRequest(submissaoParaEnviar);
+					HttpEntity<MultiValueMap<String, Object>> requestEntity = new RequestHandler().build(submissionToSend, params);
 
-					ResponseEntity<?> postForObject = restTemplateToPost.postForEntity(postURL, requestEntity,
-							String.class);
+					ResponseEntity<?> postForObject = restTemplateToPost.postForEntity(postURL, requestEntity, String.class);
 
 					ObjectMapper mapper = new ObjectMapper();
 
@@ -116,17 +122,16 @@ public class RestEventScheduler
 
 					if (postForObject.getBody().toString().contains("success"))
 					{
-						// Atualização do campo OTSID
-						submissaoParaEnviar.setOtsId(Long.parseLong(response.getId()));
-						submissaoParaEnviar.setAuthorized(true);
+						submissionToSend.setOtsId(Long.parseLong(response.getId()));
+						submissionToSend.setAuthorized(true);
 
-						itemFila.setSent(true);
+						queueItem.setSent(true);
 
 						System.out.println(postForObject);
 						System.out.println(response);
 
-						filaSubmissoesRepository.save(itemFila);
-						submissaoRepository.save(submissaoParaEnviar);
+						submissionQueueRepository.save(queueItem);
+						submissionRepository.save(submissionToSend);
 					}
 
 				}
@@ -136,39 +141,6 @@ public class RestEventScheduler
 			throw new Exception(e);
 		}
 
-	}
-
-	/**
-	 * Build http request before sending to OTS API.
-	 * 
-	 * @param submissionToSend
-	 * @return
-	 * @throws IOException
-	 */
-	private HttpEntity<MultiValueMap<String, Object>> buildRequest(SubmissionModel submissionToSend)
-			throws IOException
-	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-
-		MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-
-		File arquivo = new File(submissionToSend.getOriginalDocumentPath());
-		byte[] fileContent = Files.readAllBytes(arquivo.toPath());
-
-		File jsonMetadata = new File(CONTEXT_PATH + System.getProperty("file.separator") + "UNIFAE-METADATA.json");
-		
-		byte[] fileMetadata = Files.readAllBytes(jsonMetadata.toPath());
-
-		// Montagem do corpo da requisição
-		body.add("email", EMAIL);
-		body.add("access_token", OTS_AUTH_TOKEN);
-		body.add("fileName", arquivo.getName());
-		body.add("citationStyleHash", "3f0f7fede090f24cc71b7281073996be");
-		body.add("fileContent", fileContent);
-
-		HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-		return requestEntity;
 	}
 
 	/**
@@ -183,11 +155,11 @@ public class RestEventScheduler
 	 *
 	 * 20 - XML file.
 	 */
-	@Scheduled(cron = "0 0 1 * * *", zone = TIME_ZONE)
+	@Scheduled(cron = "0 0 1 * * *", zone = timeZone)
 	public void getRequest()
 	{
 
-		String getURL = OTS_URL + "status?email=" + EMAIL + "&access_token=" + OTS_AUTH_TOKEN;
+		String getURL = otsUrl + "status?email=" + email + "&access_token=" + otsAuthToken;
 
 		RestTemplate restTemplateToGet = new RestTemplate();
 
@@ -195,7 +167,7 @@ public class RestEventScheduler
 		{
 			LOG.debug("Starting file recovery from database...");
 
-			Iterable<SubmissionsQueue> sentFilesQueue = filaSubmissoesRepository.findAllBySent(true);
+			Iterable<SubmissionsQueue> sentFilesQueue = submissionQueueRepository.findAllBySent(true);
 
 			for (SubmissionsQueue queueItem : sentFilesQueue)
 			{
@@ -219,7 +191,7 @@ public class RestEventScheduler
 
 					String xmlFilePath = processFile(executeRequest(restTemplateToGet, getURL, "20"), "xml", aluno);
 
-					String htmlFilePath = conversor.converteXML(xmlFilePath, manipuladorDeArquivos, aluno);
+					String htmlFilePath = conversor.converteXML(xmlFilePath, fileManager, aluno);
 
 					SubmissionModel submission = queueItem.getSubmissionModel();
 
@@ -228,22 +200,16 @@ public class RestEventScheduler
 					submission.setXmlPath(xmlFilePath);
 					submission.setHtmlPath(htmlFilePath);
 
-					submissaoRepository.save(submission);
+					submissionRepository.save(submission);
 
-					filaSubmissoesRepository.delete(queueItem);
+					submissionQueueRepository.delete(queueItem);
 				}
 
 			}
 
-		} catch (RestClientException e)
+		} catch (Exception e)
 		{
 			LOG.error(e.getMessage());
-		} catch (IOException e)
-		{
-			LOG.error(e.getMessage());
-		} catch (TransformerException ex)
-		{
-			LOG.error(ex.getMessage());
 		}
 	}
 
@@ -255,29 +221,20 @@ public class RestEventScheduler
 	 * @param              idArquivoObtido- File id to be requested to OTS api.
 	 * 
 	 * @return = Byte array from file comming from OTS api.
-	 * 
-	 * @throws IOException
-	 * @throws RestClientException
+	 * @throws Exception 
 	 */
-	protected byte[] executeRequest(RestTemplate restTemplate, String url, String fileId)
-			throws IOException, RestClientException
+	protected byte[] executeRequest(RestTemplate restTemplate, String url, String fileId) throws Exception
 	{
 
-		ByteArrayHttpMessageConverter byteArrayMessageConverter = new ByteArrayHttpMessageConverter();
+		ByteArrayHttpMessageConverter messageConverter = new ByteArrayHttpMessageConverter();
 
-		List<MediaType> allowedMediaTypes = new ArrayList<>();
-
-		List<MediaType> fileTypes = new ArrayList<>();
-		fileTypes.add(new MediaType("application", "pdf"));
-		fileTypes.add(new MediaType("application", "xml"));
-		fileTypes.add(new MediaType("application", "epub+zip"));
-
-		allowedMediaTypes.addAll(fileTypes);
-
-		byteArrayMessageConverter.setSupportedMediaTypes(allowedMediaTypes);
+		List<MediaType> allowedMediaTypes = buildFileTypes();
+		
+		messageConverter.setSupportedMediaTypes(allowedMediaTypes);
 
 		List<HttpMessageConverter<?>> httpMessageConverter = new ArrayList<>();
-		httpMessageConverter.add(byteArrayMessageConverter);
+		
+		httpMessageConverter.add(messageConverter);
 
 		restTemplate.setMessageConverters(httpMessageConverter);
 
@@ -285,15 +242,27 @@ public class RestEventScheduler
 
 		HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
 
-		ResponseEntity<byte[]> response = restTemplate.exchange(conversionUrlBuilder(url, fileId), HttpMethod.GET,
-				entity, byte[].class);
+		ResponseEntity<byte[]> response = restTemplate.exchange(conversionUrlBuilder(url, fileId), HttpMethod.GET, entity, byte[].class);
 
 		if (response.hasBody())
 		{
 			return response.getBody();
 		}
 
-		return null;
+		throw new Exception("It was not possible to recover files from OTS API");
+		
+	}
+
+	private List<MediaType> buildFileTypes() 
+	{
+		
+		List<MediaType> fileTypes = new ArrayList<>();
+		
+		fileTypes.add(new MediaType("application", "pdf"));
+		fileTypes.add(new MediaType("application", "xml"));
+		fileTypes.add(new MediaType("application", "epub+zip"));
+		
+		return fileTypes;
 	}
 
 	/**
@@ -324,12 +293,22 @@ public class RestEventScheduler
 
 		InputStream byteArrayInputStream = new ByteArrayInputStream(byteFile);
 
-		String[] paths = manipuladorDeArquivos.pathBuilder(student);
+		String[] paths = fileManager.pathBuilder(student);
 
-		manipuladorDeArquivos.writeFile(new FileOutputStream(new File(paths[0] + "submissao." + fileExtensinon)),
-				byteArrayInputStream);
+		fileManager.writeFile(new FileOutputStream(new File(paths[0] + "submissao." + fileExtensinon)), byteArrayInputStream);
 
 		return paths[0] + "submissao." + fileExtensinon;
+	}
+
+	private HashMap<String, String> buildRequestParams() {
+
+		HashMap<String, String> params = new HashMap<String, String>();
+		
+		params.put("email", email);
+		params.put("otsAuthToken", otsAuthToken);
+		params.put("metadataFilePath", metadataFilePath);
+		
+		return params;
 	}
 
 }

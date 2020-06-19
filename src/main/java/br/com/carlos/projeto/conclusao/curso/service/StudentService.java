@@ -1,6 +1,6 @@
 package br.com.carlos.projeto.conclusao.curso.service;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentModel;
 import br.com.carlos.projeto.conclusao.curso.repository.StudentRepository;
 import java.util.List;
 import javax.persistence.EntityNotFoundException;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author Carlos H
  */
 @Service
-public class StuedentService
+public class StudentService
 {
 
 	@Autowired

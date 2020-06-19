@@ -1,14 +1,13 @@
 package br.com.carlos.projeto.conclusao.curso.config.security;
 
-import static br.com.carlos.projeto.conclusao.curso.config.security.SecurityConstants.HEADER_STRING;
-import static br.com.carlos.projeto.conclusao.curso.config.security.SecurityConstants.SECRET;
-import static br.com.carlos.projeto.conclusao.curso.config.security.SecurityConstants.TOKEN_PREFIX;
 import io.jsonwebtoken.Jwts;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +18,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 {
 
 	private final ImplementsUserDetailsService userDetailsService;
+
+	@Autowired
+	private SecurityProperties securityProps;
 
 	public JWTAuthorizationFilter(AuthenticationManager authenticationManager,
 			ImplementsUserDetailsService userDetailsService)
@@ -31,9 +33,9 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException
 	{
-		String header = request.getHeader(HEADER_STRING);
+		String header = request.getHeader(securityProps.getHeaderString());
 
-		if (header == null || !header.startsWith(TOKEN_PREFIX))
+		if (header == null || !header.startsWith(securityProps.getTokenPrefix()))
 		{
 			chain.doFilter(request, response);
 			return;
@@ -47,13 +49,13 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter
 
 	private UsernamePasswordAuthenticationToken getAuthenticationToken(HttpServletRequest request)
 	{
-		String token = request.getHeader(HEADER_STRING);
+		String token = request.getHeader(securityProps.getHeaderString());
 		if (token == null)
 		{
 			return null;
 		}
 
-		String username = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token.replace(TOKEN_PREFIX, "")).getBody()
+		String username = Jwts.parser().setSigningKey(securityProps.getSecret()).parseClaimsJws(token.replace(securityProps.getTokenPrefix(), "")).getBody()
 				.getSubject();
 
 		UserDetails ud = userDetailsService.loadUserByUsername(username);

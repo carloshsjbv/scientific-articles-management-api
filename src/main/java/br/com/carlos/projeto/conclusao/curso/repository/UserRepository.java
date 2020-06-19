@@ -3,7 +3,7 @@ package br.com.carlos.projeto.conclusao.curso.repository;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.carlos.projeto.conclusao.curso.model.UserModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.UserModel;
 
 /**
  * Interface que implementa JpaRepository e é responsável pela comunicação com o

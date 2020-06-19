@@ -1,6 +1,5 @@
 package br.com.carlos.projeto.conclusao.curso.config.security;
 
-import static br.com.carlos.projeto.conclusao.curso.config.security.SecurityConstants.SIGN_UP_URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,11 +15,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 	@Autowired
 	private ImplementsUserDetailsService userDetailsService;
 
+	@Autowired
+	private SecurityProperties securityProps;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
 
-		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, SIGN_UP_URL).permitAll()
+		http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, securityProps.getSingupUrl()).permitAll()
 				.antMatchers("/*/protected/**").hasRole("USER").antMatchers("/*/admin/**").hasRole("ADMIN").and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager(), userDetailsService));

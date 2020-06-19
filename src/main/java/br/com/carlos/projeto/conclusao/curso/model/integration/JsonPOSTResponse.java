@@ -1,4 +1,4 @@
-package br.com.carlos.projeto.conclusao.curso.model.integrationmodel;
+package br.com.carlos.projeto.conclusao.curso.model.integration;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -18,14 +18,17 @@ import lombok.Setter;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class CitationStyles
+public class JsonPOSTResponse
 {
 
-	private String code;
+	private String status;
+	private String id;
+	private String[] flashMessages;
 
+	@Override
 	public String toString()
 	{
-		return "CitationStyles{" + "code=" + code + '}';
+		return "JsonPOSTResponse{" + "status=" + status + ", id=" + id + '}';
 	}
 
 }

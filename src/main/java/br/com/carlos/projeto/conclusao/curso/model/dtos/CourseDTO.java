@@ -4,7 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.CourseModel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

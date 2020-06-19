@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.carlos.projeto.conclusao.curso.model.SubmissionModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.SubmissionModel;
 import br.com.carlos.projeto.conclusao.curso.model.dtos.SubmissionDTO;
 import br.com.carlos.projeto.conclusao.curso.service.SubmissionService;
 

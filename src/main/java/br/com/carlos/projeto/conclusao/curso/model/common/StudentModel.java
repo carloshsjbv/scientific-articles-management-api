@@ -1,4 +1,4 @@
-package br.com.carlos.projeto.conclusao.curso.model;
+package br.com.carlos.projeto.conclusao.curso.model.common;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

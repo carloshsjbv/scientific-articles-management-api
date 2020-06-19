@@ -4,8 +4,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
-import br.com.carlos.projeto.conclusao.curso.model.SubmissionModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.CourseModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.SubmissionModel;
 
 @Transactional
 public interface SubmissionRepository extends JpaRepository<SubmissionModel, Long>

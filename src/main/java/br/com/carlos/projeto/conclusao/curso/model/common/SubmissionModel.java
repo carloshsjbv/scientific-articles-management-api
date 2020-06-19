@@ -1,4 +1,4 @@
-package br.com.carlos.projeto.conclusao.curso.model;
+package br.com.carlos.projeto.conclusao.curso.model.common;
 
 import java.io.Serializable;
 import java.util.Calendar;

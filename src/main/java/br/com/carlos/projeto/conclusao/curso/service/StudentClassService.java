@@ -1,6 +1,6 @@
 package br.com.carlos.projeto.conclusao.curso.service;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentClassModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentClassModel;
 import br.com.carlos.projeto.conclusao.curso.repository.StudentClassRepository;
 import java.util.List;
 import java.util.Optional;
@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Service responsável por acessar via injeção de dependência todos os recursos
- * da interface TurmaRepository.
- *
+ * Business logic for student classes' crud.
  * @author Carlos H
  */
 @Service

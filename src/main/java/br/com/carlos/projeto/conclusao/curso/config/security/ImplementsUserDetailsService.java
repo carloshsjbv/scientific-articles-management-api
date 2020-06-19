@@ -1,7 +1,7 @@
 package br.com.carlos.projeto.conclusao.curso.config.security;
 
 import br.com.carlos.projeto.conclusao.curso.exceptions.UserNotFoundException;
-import br.com.carlos.projeto.conclusao.curso.model.UserModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.UserModel;
 import br.com.carlos.projeto.conclusao.curso.repository.UserRepository;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class ImplementsUserDetailsService implements UserDetailsService
 
 		if (user == null)
 		{
-			throw new UserNotFoundException("Usuário nao encontrado");
+			throw new UserNotFoundException("User not found");
 		}
 		return new User(user.getUsername(), user.getPassword(), true, true, true, true, user.getAuthorities());
 	}

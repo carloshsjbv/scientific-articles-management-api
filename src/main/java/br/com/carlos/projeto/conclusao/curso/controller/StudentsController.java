@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.carlos.projeto.conclusao.curso.model.Role;
-import br.com.carlos.projeto.conclusao.curso.model.StudentClassModel;
-import br.com.carlos.projeto.conclusao.curso.model.StudentModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.RoleModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentClassModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentModel;
 import br.com.carlos.projeto.conclusao.curso.model.dtos.StudentDTO;
 import br.com.carlos.projeto.conclusao.curso.service.StudentClassService;
-import br.com.carlos.projeto.conclusao.curso.service.StuedentService;
+import br.com.carlos.projeto.conclusao.curso.service.StudentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -33,7 +33,7 @@ public class StudentsController
 {
 
 	@Autowired
-	private StuedentService studentService;
+	private StudentService studentService;
 
 	@Autowired
 	private StudentClassService studentClassService;
@@ -76,8 +76,8 @@ public class StudentsController
 
 		if (studentClass != null)
 		{
-			ArrayList<Role> roles = new ArrayList<>();
-			Role role = new Role("ROLE_USER");
+			ArrayList<RoleModel> roles = new ArrayList<>();
+			RoleModel role = new RoleModel("ROLE_USER");
 			roles.add(role);
 
 			StudentModel student = new StudentModel();

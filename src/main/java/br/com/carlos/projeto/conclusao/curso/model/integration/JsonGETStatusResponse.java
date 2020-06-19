@@ -1,4 +1,4 @@
-package br.com.carlos.projeto.conclusao.curso.model.integrationmodel;
+package br.com.carlos.projeto.conclusao.curso.model.integration;
 
 import java.util.List;
 

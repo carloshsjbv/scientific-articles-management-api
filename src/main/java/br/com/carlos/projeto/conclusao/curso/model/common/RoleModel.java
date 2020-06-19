@@ -1,4 +1,4 @@
-package br.com.carlos.projeto.conclusao.curso.model;
+package br.com.carlos.projeto.conclusao.curso.model.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,7 +29,7 @@ import org.springframework.security.core.GrantedAuthority;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role implements GrantedAuthority
+public class RoleModel implements GrantedAuthority
 {
 	private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class Role implements GrantedAuthority
 	@JsonIgnore
 	private List<UserModel> users;
 
-	public Role(String authority)
+	public RoleModel(String authority)
 	{
 		this.authority = authority;
 	}

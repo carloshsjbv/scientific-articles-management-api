@@ -11,7 +11,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class TratadorRequisicoesRest extends ResponseEntityExceptionHandler
+public class RestRequestHandler extends ResponseEntityExceptionHandler
 {
 
 	@Override
@@ -27,7 +27,7 @@ public class TratadorRequisicoesRest extends ResponseEntityExceptionHandler
 	private ErrorResponse getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status,
 			List<ObjectError> errors)
 	{
-		return new ErrorResponse("Requisição possui campos inválidos", status.value(), status.getReasonPhrase(),
+		return new ErrorResponse("The request does not have valid fields", status.value(), status.getReasonPhrase(),
 				ex.getBindingResult().getObjectName(), errors);
 	}
 

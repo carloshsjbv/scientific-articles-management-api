@@ -4,7 +4,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentClassModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentClassModel;
 
 @Transactional
 public interface StudentClassRepository extends JpaRepository<StudentClassModel, Long>

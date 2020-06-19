@@ -1,9 +1,9 @@
 package br.com.carlos.projeto.conclusao.curso.service;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentModel;
-import br.com.carlos.projeto.conclusao.curso.model.SubmissionModel;
-import br.com.carlos.projeto.conclusao.curso.model.SubmissionsQueue;
-import br.com.carlos.projeto.conclusao.curso.model.UserModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.SubmissionModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.SubmissionsQueue;
+import br.com.carlos.projeto.conclusao.curso.model.common.UserModel;
 import br.com.carlos.projeto.conclusao.curso.model.dtos.SubmissionDTO;
 import br.com.carlos.projeto.conclusao.curso.repository.CourseRepository;
 import br.com.carlos.projeto.conclusao.curso.repository.SubmissionsQueueRepository;
@@ -38,7 +38,7 @@ public class SubmissionService
 	private UserService userService;
 
 	@Autowired
-	private StuedentService studentService;
+	private StudentService studentService;
 
 	@Autowired
 	private CourseRepository courseRepository;

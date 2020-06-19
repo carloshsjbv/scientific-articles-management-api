@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentModel;
 
 /**
  * Class responsible for saving submissions file into file system
@@ -26,11 +26,11 @@ public class FileManager
 
 	private static final String CONTEXT_PATH = System.getProperty("user.dir");
 
-	@Value("${app.institution}")
-	private String APP_INSTITUTION;
+	@Value("${application.institution}")
+	private String institutionName;
 
-	@Value("${app.abbrev}")
-	private String APP_ABBREV;
+	@Value("${application.abbrev}")
+	private String applicationAbbrev;
 
 	/**
 	 * Responsible for building an array of paths which were build according
@@ -53,10 +53,16 @@ public class FileManager
 
 		StringBuilder abbrevPath = new StringBuilder();
 
-		abbrevPath.append(APP_INSTITUTION).append(fileSeparator).append(APP_ABBREV).append(fileSeparator)
-				.append(student.getStudentClass().getCourse().getAcronym()).append(fileSeparator)
-				.append(student.getStudentClass().getInitialYear()).append(fileSeparator)
-				.append(student.getScholarIdentification()).append(fileSeparator);
+		abbrevPath
+				.append(institutionName)
+				.append(fileSeparator).append(applicationAbbrev)
+				.append(fileSeparator)
+				.append(student.getStudentClass().getCourse().getAcronym())
+				.append(fileSeparator)
+				.append(student.getStudentClass().getInitialYear())
+				.append(fileSeparator)
+				.append(student.getScholarIdentification())
+				.append(fileSeparator);
 
 		paths[0] = abbrevPath.toString();
 
@@ -77,7 +83,6 @@ public class FileManager
 	 * @param paths
 	 * @param file
 	 *
-	 *
 	 * @return = abbreviated path which will be save at database as a reference.
 	 *
 	 * @throws java.io.FileNotFoundException
@@ -91,10 +96,8 @@ public class FileManager
 
 	public void writeFile(FileOutputStream fileOut, InputStream inputStream) throws IOException, FileNotFoundException
 	{
-		// bufferedStream do arquivo de entrada
 		BufferedInputStream in = new BufferedInputStream(inputStream);
 
-		// Buffer utilizado para a gravação
 		BufferedOutputStream out = new BufferedOutputStream(fileOut);
 
 		IOUtils.copy(in, out);

@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.carlos.projeto.conclusao.curso.model.CourseModel;
-import br.com.carlos.projeto.conclusao.curso.model.StudentClassModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.CourseModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentClassModel;
 import br.com.carlos.projeto.conclusao.curso.model.dtos.CourseDTO;
 import br.com.carlos.projeto.conclusao.curso.service.CourseService;
 import br.com.carlos.projeto.conclusao.curso.service.StudentClassService;

@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -16,40 +14,48 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import br.com.carlos.projeto.conclusao.curso.model.StudentModel;
+import br.com.carlos.projeto.conclusao.curso.model.common.StudentModel;
 
 @Component
 public class XMLConversor
 {
 
-	public String converteXML(String path, FileManager manipuladorDeArquivos, StudentModel aluno)
-			throws TransformerConfigurationException, TransformerException, MalformedURLException, IOException
-	{
+	private Logger LOG = LoggerFactory.getLogger(XMLConversor.class);
 
+	
+	@Value("${application.xsl.filepath}")
+	private String xslFilePath;
+
+	public String converteXML(String path, FileManager fileManager, StudentModel student) throws TransformerConfigurationException, TransformerException, MalformedURLException, IOException
+	{
 		try
 		{
-			File xslFile = new File("transform.xsl");
+			File xslFile = new File(xslFilePath);
 
 			StreamSource xslSource = new StreamSource(xslFile);
 
-			String[] paths = manipuladorDeArquivos.pathBuilder(aluno);
+			String[] paths = fileManager.pathBuilder(student);
 			InputStream xml = new FileInputStream(new File(paths[1] + "submissao.xml"));
 
 			StreamSource xmlSource = new StreamSource(xml);
 
 			String htmlPath = path.replace("submissao.xml", "") + "submissao.html";
-			StreamResult saida = new StreamResult(htmlPath);
+			StreamResult output = new StreamResult(htmlPath);
 
 			Transformer transformer = TransformerFactory.newInstance().newTransformer(xslSource);
 
-			transformer.transform(xmlSource, saida);
+			transformer.transform(xmlSource, output);
 
 			return htmlPath;
-		} catch (FileNotFoundException ex)
+		} 
+		catch (FileNotFoundException ex)
 		{
-			Logger.getLogger(XMLConversor.class.getName()).log(Level.SEVERE, null, ex);
+			LOG.error("Error while applying xsl over xml file.", ex);
 			return null;
 		}
 	}
