@@ -1,6 +1,6 @@
 # Scientific Articles Management API
 
-This software, is a result of a one year research at university. The final paper is titled "INTEGRAÇÃO DE SISTEMAS COMO SOLUÇÃO PARA IMPLANTAÇÃO DE UM REPOSITÓRIO INSTITUCIONAL DE ARTIGOS CIENTÍFICOS" and it was published as a poster at 9º Congresso de Iniciação Científica e Tecnológica do IFSP, in Boitúva - São Paulo.
+This software, is a result of a one year research at university. The final paper is titled _INTEGRAÇÃO DE SISTEMAS COMO SOLUÇÃO PARA IMPLANTAÇÃO DE UM REPOSITÓRIO INSTITUCIONAL DE ARTIGOS CIENTÍFICOS_ and it was published as a poster at _9º Congresso de Iniciação Científica e Tecnológica do IFSP_, in Boitúva - São Paulo.
 
 This project aims to create an API to receive scientific articles submissions, perform integration to an external web service through HTTP requests and generate web-friendly versions (e-pub, XML, and HTML file formats) from a docx file.
 
